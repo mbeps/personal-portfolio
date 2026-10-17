@@ -21,38 +21,7 @@ import type Database from "@/types/database/database";
  */
 const projectMap: Database<ProjectInterface> = {
   //^ Full-Stack Projects
-  [ProjectDatabaseKeys.ForumDiscussions]: {
-    name: "Forum Discussions",
-    description: `
-      A forum-style social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them.
-      Tested on CRUD and software engineering principles.
-      `,
-    repositoryURL: "https://github.com/mbeps/next_discussion_platform",
-    deploymentURL: "https://forum-discussions.maruf-bepary.com/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ChakraUi,
-      SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Firestore,
-      SkillDatabaseKeys.Jotai,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_FinalYearProject,
-      ProjectDatabaseKeys.FlaskForumBackend,
-    ],
-    type: ProjectTypeEnum.Academic,
-  },
+
   [ProjectDatabaseKeys.CarDealership]: {
     name: "Car Dealership",
     description: `
@@ -85,38 +54,150 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.RealTimeMessaging]: {
-    name: "Real-Time Messaging",
+  [ProjectDatabaseKeys.ForumDiscussions]: {
+    name: "Forum Discussions",
     description: `
-      A real-time messaging platform.
-      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
+      A forum-style social media platform was developed enabling users to form communities, 
+      start discussions, and comment on them.
+      Tested on CRUD and software engineering principles.
       `,
-    repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
-    deploymentURL: "https://messaging.maruf-bepary.com/",
-
+    repositoryURL: "https://github.com/mbeps/next_discussion_platform",
+    deploymentURL: "https://forum-discussions.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.BetterAuth,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Pusher,
-      SkillDatabaseKeys.Cloudinary,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.HeadlessUi,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.ChakraUi,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Firestore,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
-    type: ProjectTypeEnum.Personal,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_FinalYearProject,
+      ProjectDatabaseKeys.FlaskForumBackend,
+    ],
+    type: ProjectTypeEnum.Academic,
+  },
+  [ProjectDatabaseKeys.CommerzbankAppStatus]: {
+    name: "Commerzbank App Status",
+    description: `
+      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
+      Users are able to create personal subscriptions groups with other members. 
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
+      .COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.CommerzbankRates]: {
+    name: "Commerzbank Rates",
+    description: `
+      A web application that provides rates to business users and allows exporting and viewing historical data.
+      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringDataMongoDb,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
+    name: "Commerzbank Phoenix Finance Enrichment",
+    description: `
+        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.FastApi,
+
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+    ).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+    ],
   },
   [ProjectDatabaseKeys.MusicStreaming]: {
     name: "Music Streaming",
@@ -176,118 +257,38 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.CommerzbankAppStatus]: {
-    name: "Commerzbank App Status",
+  [ProjectDatabaseKeys.RealTimeMessaging]: {
+    name: "Real-Time Messaging",
     description: `
-      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
-      Users are able to create personal subscriptions groups with other members. 
-    `,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.TypeOrm,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.Grafana,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
-      .COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-      ProjectDatabaseKeys.EmailMicroService,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
-  },
-  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
-    name: "Commerzbank Phoenix Finance Enrichment",
-    description: `
-        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
-    `,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Python,
+      A real-time messaging platform.
+      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
+      `,
+    repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
+    deploymentURL: "https://messaging.maruf-bepary.com/",
 
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.FastApi,
-
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Grafana,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
-    ).COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      RoleDatabaseKeys.CommerzbankAiEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-    ],
-  },
-  [ProjectDatabaseKeys.CommerzbankRates]: {
-    name: "Commerzbank Rates",
-    description: `
-      A web application that provides rates to business users and allows exporting and viewing historical data.
-      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
-    `,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataLdap,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Pusher,
+      SkillDatabaseKeys.Cloudinary,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.HeadlessUi,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Grafana,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-      ProjectDatabaseKeys.EmailMicroService,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
+    type: ProjectTypeEnum.Personal,
   },
 
   //^ Extra Web Development Projects
