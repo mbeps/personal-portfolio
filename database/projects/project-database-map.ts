@@ -1121,7 +1121,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AuthenticationMicroService]: {
     name: "Authentication Microservice",
     description: `
-      A microservice providing authentication (such as email/password and OAuth) to various applications.
+      A microservice providing OAuth authentication and authorisation to various applications using Microsoft Entra.
       Minimises on duplications allowing for faster development and simpler infrastructure.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
