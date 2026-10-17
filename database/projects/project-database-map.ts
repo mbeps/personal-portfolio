@@ -1154,7 +1154,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.EntraMockService]: {
     name: "Entra Mock Service",
     description: `
-      A mock service for simulating Entra authentication flows. This is used during development as Entra does not work in local environments. Mock users with various roles and permissions can be created to test different scenarios.
+      A mock service for simulating Entra authentication flows.
+      Allows creation of mock users with various roles and permissions to test different scenarios. 
+      This is used during development as Entra does not work in local environments. Mock users with various roles and permissions can be created to test different scenarios.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
