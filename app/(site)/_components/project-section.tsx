@@ -19,12 +19,7 @@ const ProjectsSection = () => {
    */
   const displayedProjects: string[] = [
     ProjectDatabaseKeys.AiChatClient,
-    ProjectDatabaseKeys.AiWorkflowAutomations,
     ProjectDatabaseKeys.CarDealership,
-    ProjectDatabaseKeys.ForumDiscussions,
-    ProjectDatabaseKeys.MusicStreaming,
-    ProjectDatabaseKeys.RichTextNotes,
-    ProjectDatabaseKeys.RealTimeMessaging,
     ProjectDatabaseKeys.CommerzbankAppStatus,
     ProjectDatabaseKeys.CommerzbankRates,
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
