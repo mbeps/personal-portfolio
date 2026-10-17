@@ -24,8 +24,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: "Forum Discussions",
     description: `
-      For a final year university project, 
-      a social media platform was developed enabling users to form communities, 
+      A forum-style social media platform was developed enabling users to form communities, 
       start discussions, and comment on them.
       Tested on CRUD and software engineering principles.
       `,
@@ -60,9 +59,10 @@ const projectMap: Database<ProjectInterface> = {
       Car dealership website for a client.
       Users can browse, search, and filter cars.
       Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
+      AI clients can interact with app via MCP.
       `,
     repositoryURL: "https://github.com/mbeps/car-dealership",
-    // deploymentURL: "https://www.mn-ltd.uk/",
+    deploymentURL: "https://car-dealership.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -79,6 +79,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
@@ -87,7 +88,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.RealTimeMessaging]: {
     name: "Real-Time Messaging",
     description: `
-      A custom back-end learning project involved creating a straightforward real-time messaging app. 
+      A real-time messaging platform.
       Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
     repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
@@ -120,7 +121,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.MusicStreaming]: {
     name: "Music Streaming",
     description: `
-      My first major project using Supabase was a basic music streaming site. 
+      Music steaming platform. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
