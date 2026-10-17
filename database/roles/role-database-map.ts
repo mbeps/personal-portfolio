@@ -118,15 +118,11 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.SymphonyPollBot,
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.SymphonyBlogBot,
-      ProjectDatabaseKeys.SymphonyInteractiveBot,
-      ProjectDatabaseKeys.SymphonyHeadlessBot,
 
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
 
-      ProjectDatabaseKeys.SpringDataJPATemplate,
-      ProjectDatabaseKeys.SpringDataMongoTemplate,
       ProjectDatabaseKeys.SpringBootLdapTemplate,
     ],
     company: CompanyDatabaseKeys.Commerzbank,

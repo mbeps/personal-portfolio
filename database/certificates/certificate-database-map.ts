@@ -1780,7 +1780,6 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     relatedMaterials: [
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
-      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
     ],
   },
@@ -2940,7 +2939,6 @@ const certificateMap: Database<CertificateInterface> = {
       relatedMaterials: [
         ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
         CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
-        ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       ],
     },
   [CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms]: {
@@ -3452,8 +3450,6 @@ const certificateMap: Database<CertificateInterface> = {
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyWebhookBot,
-      ProjectDatabaseKeys.SymphonyInteractiveBot,
-      ProjectDatabaseKeys.SymphonyHeadlessBot,
       ProjectDatabaseKeys.SymphonyPollBot,
     ],
   },

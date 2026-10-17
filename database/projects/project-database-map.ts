@@ -290,30 +290,6 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.OnlineArticles]: {
-    name: "Online Articles",
-    description: `
-      To learn Supabase, I developed a simple website for reading and writing articles. 
-      Users can read, create, and delete articles. 
-      This project paved the way for using Supabase in subsequent projects.
-      `,
-    repositoryURL: "https://github.com/mbeps/sideshow-articles",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.NextUi,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OnlineArticles).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
   [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
     name: "OAuth Next.js & Spring Boot",
     description: `
@@ -1436,52 +1412,6 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     archived: true,
   },
-  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
-    name: "Symphony Interactive Bot Example",
-    description: `
-      A Symphony bot for learning how to create an interactive bot in Symphony.
-      This bot is used to demonstrate how to create an interactive bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
-    name: "Symphony Headless Bot Example",
-    description: `
-      A Symphony bot for learning how to create a Headless Bot in Symphony.
-      This bot is used to demonstrate how to create a headless bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: "Flask Forum Backend",
     description: `
@@ -1504,83 +1434,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.ForumDiscussions,
     ],
     type: ProjectTypeEnum.Academic,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.FlaskBackendDemo]: {
-    name: "Flask Backend Demo",
-    description: `
-      A simple Flask app to learn how to create a RESTful API. 
-      This was a foundational project to learn how to create a back-end using Flask.
-      This was helpful when creating the back-end for the discussion platform.
-      `,
-    repositoryURL: "https://github.com/mbeps/python-flask-demo",
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.SqlAlchemy,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.SqLite,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.UserAuthentication]: {
-    name: "User Authentication",
-    description: `
-      A list of projects implementing and experimenting with user authentication using various stacks.
-      `,
-    repositoryURL: "https://github.com/stars/mbeps/lists/web-authentication",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.Auth0,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.PostgreSql,
-
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Django,
-      SkillDatabaseKeys.Flask,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.SpringDataJPATemplate]: {
-    name: "Spring Data JPA Template",
-    description: `
-      A template project for using Spring Data JPA with PostgreSQL. 
-      This was created for documenting how use SQL databases for our Spring Boot projects.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL: "https://github.com/mbeps/springboot-sql-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataJpa,
-    ],
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SpringDataMongoTemplate]: {
-    name: "Spring Data MongoDB Template",
-    description: `
-      A template project for using Spring Data MongoDB.
-      This was created for documenting how use MongoDB databases for our Spring Boot projects.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL:
-      "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataJpa,
-    ],
     archived: true,
   },
   [ProjectDatabaseKeys.SpringBootLdapTemplate]: {
@@ -1722,48 +1575,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
-  //^ Algorithms and Data Structures
-  [ProjectDatabaseKeys.Leetcode]: {
-    name: "Leetcode Solutions",
-    description: `
-      A collection of Leetcode solutions in Python. 
-      This is used to practice algorithms and data structures.
-      They are also used to practice unit testing.
-      CI/CD is also used to run the tests when merging to the main branch.
-      `,
-    repositoryURL: "https://github.com/stars/mbeps/lists/leetcode",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.GitHubActions,
-    ],
-    category: ProjectCategoriesEnum.Algorithms,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
-    name: "Searching & Sorting Algorithms",
-    description: `
-      Jupyter Notebook containing various searching and sorting algorithms.
-      Each algorithms is explained. 
-      All the algorithms are also compared to each other. 
-    `,
-    category: ProjectCategoriesEnum.Algorithms,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.NumPy,
-    ],
-    repositoryURL: "https://github.com/mbeps/algorithms",
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
-      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
-      CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
-    ],
-    type: ProjectTypeEnum.Academic,
-  },
-
   //^ Other Projects
   [ProjectDatabaseKeys.CommerzbankTrumpNotification]: {
     name: "Commerzbank Trump Notification",
@@ -1817,18 +1628,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Academic,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OsmosGame).COVER,
-  },
-  [ProjectDatabaseKeys.AutomatedSetup]: {
-    name: "Automated Setup",
-    description: `
-      A shell script which automates the setup of a new Linux machine.
-      This is specifically for my Fedora install.
-      `,
-    skills: [SkillDatabaseKeys.ShellScript],
-    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MdmAutomations]: {
     name: "MDM Automations",

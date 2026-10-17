@@ -310,7 +310,6 @@ const modulesMap: Database<ModuleInterface> = {
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
     relatedMaterials: [
-      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
       CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms,
     ],
