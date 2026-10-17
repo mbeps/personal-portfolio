@@ -523,6 +523,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.HandWrittenDigitClassifier,
     ).COVER,
+    archived: true,
   },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
@@ -606,6 +607,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    archived: true,
     skills: [
       SkillDatabaseKeys.Python,
 
@@ -630,6 +632,7 @@ const projectMap: Database<ProjectInterface> = {
     `,
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
+    
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
@@ -706,6 +709,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ReinforcementLearning,
       SkillDatabaseKeys.DeepLearning,
     ],
+    archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CustomQLearningAgent)
       .COVER,
@@ -1050,6 +1054,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.AiGenerations]: {
     name: "AI Generations",
+    archived: true,
     description: `
       A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
@@ -1082,6 +1087,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.AiQuizzes]: {
     name: "AI Quizzes",
+    archived: true,
     description: `
       A platform for dynamic quiz generation. 
       Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
