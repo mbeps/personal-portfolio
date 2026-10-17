@@ -35,3 +35,21 @@ The system provides a comprehensive admin interface for dealership management:
 - Admins can set working hours for each day of the week
 - Admins can manage admin user accounts
 - Admins can configure FAQs shown in the home screen
+
+## AI and Model Context Protocol (MCP) Integration
+The system provides Model Context Protocol (MCP) tools for administrative actions through AI agents:
+- AI agents can retrieve dashboard metrics, inventory counts, and conversion rates
+- AI agents can list all cars across available, sold, and unavailable statuses
+- AI agents can retrieve all vehicle make and colour records for metadata updates
+- AI agents can update vehicle status and featured showcase flags
+- AI agents can update vehicle metadata listings
+- AI agents can delete vehicle listings, associated bookings, and storage assets
+- AI agents can search and filter customer test-drive reservations
+- AI agents can update customer test-drive reservation statuses
+- AI agents can update dealership contact details and address information
+- AI agents can configure and save weekly dealership working hours
+- AI agents can manage homepage FAQs (add, update, delete, and reorder)
+- AI agents can update homepage marketing copy and statistics
+- AI agents can list registered users and their details
+- AI agents can update user roles between User and Admin
+- AI agents can inspect storage bucket consumption and quota limits
