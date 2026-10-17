@@ -99,7 +99,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.MongoDb,
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Pusher,
