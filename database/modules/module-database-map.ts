@@ -818,6 +818,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Addressing common issues in machine learning like overfitting and class imbalance",
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
+      "Building a handwritten digit classifier using Convolutional Neural Networks (CNNs) in TensorFlow and Keras, applying data augmentation, batch normalisation, and dropout to optimise performance",
     ],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
@@ -858,11 +859,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Analyzing the ethical implications of machine learning applications",
       "Implementing learning from demonstration techniques",
       "Addressing challenges in machine learning such as overfitting and bias",
-      "Building a handwritten digit classifier using Convolutional Neural Networks (CNNs) in TensorFlow and Keras, applying data augmentation, batch normalisation, and dropout to optimise performance",
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-      ProjectDatabaseKeys.CustomQLearningAgent,
+      "Building a neural network from scratch in Python to train a Pacman agent, applying batch normalisation, dropout, momentum, and learning rate decay",
+      "Implementing a custom Q-learning agent from mathematical foundations to navigate a Pacman environment",
     ],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {

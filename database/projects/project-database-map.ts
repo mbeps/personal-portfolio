@@ -517,34 +517,6 @@ const projectMap: Database<ProjectInterface> = {
       .COVER,
     archived: true,
   },
-  [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
-    name: "Custom Neural Network Classifier",
-    description: `
-      Built a neural network from scratch to teach a Pacman agent.
-      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    archived: true,
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-    ],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-    ).COVER,
-  },
   [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
     name: "Machine Learning Algorithms",
     description: `
@@ -606,34 +578,6 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ).COVER,
-  },
-  [ProjectDatabaseKeys.CustomQLearningAgent]: {
-    name: "Custom Q-Learning Agent",
-    description: `
-      A custom Q-Learning agent learns to play Pacman.
-      Required foundational Mathematics knowledge and understanding of the Q-Learning algorithm.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-coursework-2-pacman",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ReinforcementLearning,
-      SkillDatabaseKeys.DeepLearning,
-    ],
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CustomQLearningAgent)
-      .COVER,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",

@@ -83,7 +83,6 @@ export default function About() {
     ProjectDatabaseKeys.CommerzbankRates,
 
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-    ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
     ProjectDatabaseKeys.LinuxGnomeMcp,
     ProjectDatabaseKeys.ExcelSpreadsheetMCP,
 
