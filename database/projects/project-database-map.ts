@@ -57,6 +57,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: "Forum Discussions",
+    archived: true,
     description: `
       A forum-style social media platform was developed enabling users to form communities, 
       start discussions, and comment on them.
@@ -302,7 +303,7 @@ const projectMap: Database<ProjectInterface> = {
       `,
     repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
     deploymentURL: "https://messaging.maruf-bepary.com/",
-
+    archived: true,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -657,6 +658,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.EntraMockService]: {
     name: "Entra Mock Service",
+    archived: true,
     description: `
       A mock service for simulating Entra authentication flows.
       Allows creation of mock users with various roles and permissions to test different scenarios. 
