@@ -1487,25 +1487,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
 
-  //^ Programming Fundamentals
-  [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
-    name: "Java Fundamentals Assignments",
-    description: `
-      First-year Java assignments focused on learning the basics of Java and Object-Oriented Programming (OOP). 
-      These projects covered core concepts like classes, inheritance, and data handling. 
-      They provided a solid foundation in Java programming and practical experience with fundamental OOP principles.
-      `,
-    repositoryURL:
-      "https://github.com/stars/mbeps/lists/java-fundamentals-assignments",
-    skills: [SkillDatabaseKeys.Java],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
-      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
-    ],
-  },
   [ProjectDatabaseKeys.DatabasesMiniProject]: {
     name: "Database Mini Project",
     description: "Learning to interact with a database using Java.",

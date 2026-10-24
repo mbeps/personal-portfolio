@@ -24,7 +24,6 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Object Oriented Programming 1",
     category: ModuleYearGroupsEnum.Year1,
     skills: [SkillDatabaseKeys.Java],
-    relatedMaterials: [ProjectDatabaseKeys.JavaFundamentalsAssignments],
     learningOutcomes: [
       "Introducing basic concepts of computer programming",
       "Understanding the importance and role of data in programming",
@@ -44,10 +43,7 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Object Oriented Programming 2",
     category: ModuleYearGroupsEnum.Year1,
     skills: [SkillDatabaseKeys.Java],
-    relatedMaterials: [
-      ProjectDatabaseKeys.JavaFundamentalsAssignments,
-      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
-    ],
+    relatedMaterials: [CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass],
     learningOutcomes: [
       "Exploring enumerated types and recursion in Java",
       "Defining recursive data types and handling exceptions",
