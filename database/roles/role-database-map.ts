@@ -107,18 +107,11 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.CommerzbankDataNotification,
       ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+      ProjectDatabaseKeys.SymphonyBots,
 
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
-
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyWebhookBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
-      ProjectDatabaseKeys.SymphonyPollBot,
-      ProjectDatabaseKeys.SymphonyRssBot,
-      ProjectDatabaseKeys.SymphonyBlogBot,
 
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,

@@ -13,6 +13,7 @@ import SkillTypesEnum from "@/enums/skill/skill-types-enum";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
 import type Database from "@/types/database/database";
+import BlogDatabaseKeys from "../blogs/blog-database-keys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -722,26 +723,29 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Professional,
   },
-  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
-    name: "Symphony Translate Bot",
+  [ProjectDatabaseKeys.SymphonyBots]: {
+    name: "Symphony Bots",
     description: `
-      A Symphony bot that translates messages in a Symphony chatroom.
-      Replaces the old bot which was originally built using the outdated SDK.
-      Much faster, more reliable, and easier to maintain and more features compared to the old bot.
-      `,
+      A suite of enterprise Symphony chatbots built to automate communication and operational workflows.
+      Key features include AI text generation with Azure OpenAI, live message translation, webhooks, interactive polls, and automated report aggregation.
+      All services were developed with Java and Spring Boot, tested with JUnit and Mockito, and deployed using Docker and GCP.
+    `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.SpringDataMongoDb,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
@@ -749,178 +753,10 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankAiEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
-    name: "Symphony CobaGPT Bot",
-    description: `
-      A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
-      This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
-      This bot is a result of Commerzbank's initiative towards automation using AI.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
+      BlogDatabaseKeys.CommerzbankMigrationToBDK,
     ],
     type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: "Symphony Webhooks Bot",
-    description: `
-      A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
-      This bot is used to send messages to a chatroom from an external source.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyPollBot]: {
-    name: "Symphony Poll Bot",
-    description: `
-      A Symphony bot for creating polls and surveys for gathering feedback.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyRssBot]: {
-    name: "Symphony RSS Bot",
-    description: `
-      A Symphony bot which fetches RSS feeds from various sources and posts them to a Symphony chatroom.
-      Users can subscribe to specific RSS feeds and receive updates in real-time.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SymphonyBlogBot]: {
-    name: "Symphony Blog Bot",
-    description: `
-      A Symphony bot which makes announcements in chatrooms and direct messages using markdown formatting.
-      Users can create, edit, and delete announcements using simple commands.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
-    name: "Symphony Business Highlights Bot",
-    description: `
-      A Symphony bot which compiles weekly business reports from various users
-      and generates a summary of the business highlights for the week.
-      Uses Azure Active Directory for managing permissions and access control.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
   },
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: "Flask Forum Backend",
@@ -963,14 +799,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Libraries,
     type: ProjectTypeEnum.Professional,
     archived: true,
-    relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyRssBot,
-      ProjectDatabaseKeys.CommerzbankRates,
-
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
     name: "Markdown to MessageML Converter",
@@ -988,11 +817,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Libraries,
     type: ProjectTypeEnum.Professional,
     archived: true,
-    relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyBlogBot,
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
     name: "LDAP Role-Based Access Control Library",
@@ -1011,11 +836,8 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     archived: true,
     relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
       ProjectDatabaseKeys.CommerzbankRates,
-      ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
-
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },

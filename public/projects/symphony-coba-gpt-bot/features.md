@@ -1,5 +1,0 @@
-- Natural language conversations 
-- Multiple topics 
-- Generating emails in various tones from rough notes
-- Summarising large text 
-- Translating text between various languages

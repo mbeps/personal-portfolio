@@ -85,12 +85,6 @@ export default function About() {
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
     ProjectDatabaseKeys.LinuxGnomeMcp,
     ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-
-    ProjectDatabaseKeys.SymphonyTranslateBot,
-    ProjectDatabaseKeys.SymphonyPollBot,
-    ProjectDatabaseKeys.SymphonyBlogBot,
-    ProjectDatabaseKeys.SymphonyRssBot,
-    ProjectDatabaseKeys.SymphonyWebhookBot,
   ];
 
   return (
