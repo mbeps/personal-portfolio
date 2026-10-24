@@ -15,7 +15,6 @@ import Socials from "@/components/socials/socials";
 import DetailsTable from "@/components/ui/details-table";
 import { DEVELOPER } from "@/config/developer-info";
 import { PATHS } from "@/config/paths";
-import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import companyDatabaseMap from "@/database/companies/company-database-map";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import courseDatabaseMap from "@/database/courses/course-database-map";
