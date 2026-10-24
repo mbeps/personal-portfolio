@@ -42,9 +42,8 @@ const rolesMap: Database<RoleInterface> = {
     endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
     relatedMaterials: [
       ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
       ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy,
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
@@ -106,6 +105,8 @@ const rolesMap: Database<RoleInterface> = {
 
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
 
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,

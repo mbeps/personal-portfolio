@@ -163,6 +163,42 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
   },
+  [ProjectDatabaseKeys.CommerzbankDataNotification]: {
+    name: "Commerzbank Data Notification",
+    description: `
+    Analyses Data Notification against DACS reports to identify impacted users and applications. 
+    It verifies Reuters Instrument Code usage, tracks remediation actions, and exports results to Excel.`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    type: ProjectTypeEnum.Professional,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+    ).COVER,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
   [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
     name: "Commerzbank Phoenix Finance Enrichment",
     description: `
@@ -634,7 +670,7 @@ const projectMap: Database<ProjectInterface> = {
     `,
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
-    
+
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
