@@ -41,7 +41,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.MachineLearningAlgorithms],
     description: `
       Learning and practicing various Machine Learning algorithms and techniques. This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning. Some additional content in the field of Deep Learning and Neural Networks are also covered. `,
     learningOutcomes: [
@@ -101,9 +100,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ],
     description: `
       This course teaches the fundamentals and advanced techniques of AI, including Q-Learning, Deep Learning, and Large Language Models. 
@@ -213,7 +209,6 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       description: `
         This course covers the basics of Python and data analysis, including visualization and statistical methods. It teaches machine learning techniques such as regression, clustering, classification, and deep learning with practical applications. You will also learn about using advanced tools like Spark, Transformers, and OpenAI APIs for real-world data processing and model deployment.`,
-      relatedMaterials: [ProjectDatabaseKeys.MachineLearningDataScienceLab],
     },
   [CertificateDatabaseKeys.LinkedInAppliedArtificialIntelligenceAlgorithms]: {
     name: "Applied Artificial Intelligence: Algorithms",

@@ -44,13 +44,7 @@ enum ProjectDatabaseKeys {
   AlignmentInLargeLanguageModels = "alignment-in-large-language-models",
   ExcelSpreadsheetMCP = "excel-spreadsheet-mcp",
   LinuxGnomeMcp = "linux-gnome-mcp",
-  MachineLearningAlgorithms = "machine-learning-algorithms",
-  ArtificialIntelligenceReinforcementLearning = "artificial-intelligence-reinforcement-learning",
-  AdultIncomePrediction = "adult-income-prediction",
-  HousePricePrediction = "house-price-prediction",
-  MachineLearningDataScienceLab = "machine-learning-data-science-lab",
   VisionTransformerFromScratch = "vision-transformer-from-scratch",
-  SimpleAIResearchAgent = "simple-ai-research-agent",
   LlamaCppProviderForGitHubCopilotChat = "llama-cpp-provider-for-github-copilot-chat",
   CommerzbankGenAiToOpenAiApiProxy = "commerzbank-gen-ai-to-open-ai-api-proxy",
 
