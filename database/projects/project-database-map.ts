@@ -446,34 +446,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
     ).COVER,
   },
-  [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
-    name: "Handwritten Digit Classifier",
-    description: `
-      A handwritten digit classifier using built using a Convolutional Neural Network (CNN).
-      Used various techniques such as data augmentation, batch normalisation, and dropout to improve the model's performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/pattern-recognition-neural-network-coursework-1",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-    ],
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.ComputerVision,
-    ],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.HandWrittenDigitClassifier,
-    ).COVER,
-    archived: true,
-  },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
     description: `

@@ -819,7 +819,6 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.HandWrittenDigitClassifier],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
     name: "Machine Learning",
@@ -827,6 +826,8 @@ const modulesMap: Database<ModuleInterface> = {
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -842,6 +843,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.ComputerVision,
     ],
     learningOutcomes: [
       "Understanding fundamental machine learning concepts and algorithms",
@@ -856,6 +858,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Analyzing the ethical implications of machine learning applications",
       "Implementing learning from demonstration techniques",
       "Addressing challenges in machine learning such as overfitting and bias",
+      "Building a handwritten digit classifier using Convolutional Neural Networks (CNNs) in TensorFlow and Keras, applying data augmentation, batch normalisation, and dropout to optimise performance",
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
