@@ -48,7 +48,6 @@ enum ProjectDatabaseKeys {
   ArtificialIntelligenceReinforcementLearning = "artificial-intelligence-reinforcement-learning",
   AdultIncomePrediction = "adult-income-prediction",
   HousePricePrediction = "house-price-prediction",
-  ComputationalFinanceAssignment = "computational-finance-assignment",
   MachineLearningDataScienceLab = "machine-learning-data-science-lab",
   MarkovDecisionAgent = "custom-markov-decision-agent",
   ComputerVisionImageSegmentation = "computer-vision-image-segmentation-assignment",

@@ -78,7 +78,6 @@ const courseMap: Database<CourseInterface> = {
       ProjectDatabaseKeys.ForumDiscussions,
       ProjectDatabaseKeys.Noodle,
       ProjectDatabaseKeys.FlaskForumBackend,
-      ProjectDatabaseKeys.ComputationalFinanceAssignment,
       ProjectDatabaseKeys.OsmosGame,
     ],
   },

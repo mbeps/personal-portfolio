@@ -579,36 +579,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ).COVER,
   },
-  [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
-    name: "Computational Finance Assignment",
-    description: `
-      Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
-      Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
-    repositoryURL: "https://github.com/mbeps/Computation_Finance_Assignment",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.Probability,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Mechanics,
-    ],
-    archived: true,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.ComputationalFinanceAssignment,
-    ).COVER,
-  },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
     category: ProjectCategoriesEnum.ArtificialIntelligence,

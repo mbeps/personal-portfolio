@@ -551,6 +551,11 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Calculus,
       SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
     ],
     learningOutcomes: [
       "Understanding the main functions of the financial system and the role of this module within it",
@@ -571,8 +576,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Calculating VaR using different methods and understanding the impact of diversification on VaR",
       "Discussing the applicability and limitations of financial models in the real-world context",
       "Exploring market efficiency hypotheses and current trends in finance",
+      "Implementing option valuation models in Python using Black-Scholes, binomial trees, and Monte Carlo simulations, analyzing put-call parity and arbitrage opportunities",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.ComputationalFinanceAssignment],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_SecurityManagement]: {
