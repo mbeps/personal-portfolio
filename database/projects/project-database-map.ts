@@ -608,55 +608,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.MachineLearningDataScienceLab,
     ).COVER,
   },
-  [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
-    name: "Computer Vision Image Segmentation",
-    description: `
-      Segmenting images using various techniques.
-      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
-    name: "Computer Vision Quizzes",
-    description: `
-      Solutions to quizzes where various low-level and mid-level vision techniques were covered.
-      These techniques include edge detection, image segmentation, and image filtering.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ComputerVisionQuizzes)
-      .COVER,
-  },
   [ProjectDatabaseKeys.SimpleAIResearchAgent]: {
     name: "Simple AI Research Agent",
     description: `

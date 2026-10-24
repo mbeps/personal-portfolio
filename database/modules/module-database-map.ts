@@ -632,7 +632,6 @@ const modulesMap: Database<ModuleInterface> = {
       "Understanding knowledge representation techniques in AI systems",
       "Implementing an intelligent Pacman agent using Markov Decision Processes and Value Iteration to make optimal decisions in stochastic environments",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -687,10 +686,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Evaluating different object recognition techniques and their applications",
       "Interpreting biological vision processes and comparing them to artificial vision systems",
       "Implementing core computer vision algorithms and understanding their limitations",
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
-      ProjectDatabaseKeys.ComputerVisionQuizzes,
+      "Implementing image segmentation in MATLAB using biological vision models, including Simple and Complex cells and Gabor filters",
+      "Applying low-level and mid-level computer vision methods in MATLAB, including edge detection, image filtering, and segmentation",
     ],
   },
   [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
