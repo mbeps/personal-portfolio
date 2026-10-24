@@ -630,6 +630,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Evaluating different AI approaches for reasoning under uncertainty",
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
+      "Implementing an intelligent Pacman agent using Markov Decision Processes and Value Iteration to make optimal decisions in stochastic environments",
     ],
     relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
   },

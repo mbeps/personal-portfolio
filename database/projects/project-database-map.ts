@@ -608,32 +608,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.MachineLearningDataScienceLab,
     ).COVER,
   },
-
-  [ProjectDatabaseKeys.MarkovDecisionAgent]: {
-    name: "Markov Decision Agent",
-    description: `
-      Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
-      Uses Markov Decision Processes, Value Iteration and other enhancements.
-      `,
-    repositoryURL: "https://github.com/mbeps/pacman-assignment",
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
-    ],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MarkovDecisionAgent)
-      .COVER,
-  },
   [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
     name: "Computer Vision Image Segmentation",
     description: `
