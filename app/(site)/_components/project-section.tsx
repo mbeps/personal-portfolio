@@ -24,7 +24,6 @@ const ProjectsSection = () => {
     ProjectDatabaseKeys.CommerzbankRates,
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
     ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-    ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
   ];
 
   return (
