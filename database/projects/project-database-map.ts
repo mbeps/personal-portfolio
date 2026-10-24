@@ -718,7 +718,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
-      ProjectDatabaseKeys.SpringBootLdapTemplate,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
     type: ProjectTypeEnum.Professional,
@@ -947,27 +946,6 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
   },
-  [ProjectDatabaseKeys.SpringBootLdapTemplate]: {
-    name: "Spring Data LDAP Template",
-    description: `
-      A template project for using Spring Data LDAP.
-      This was created for learning how to use LDAP for our Spring Boot projects specifically for role-based access control.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL: "https://github.com/mbeps/springboot-ad-ldap-template",
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataLdap,
-    ],
-    archived: true,
-  },
 
   //^ Libraries
   [ProjectDatabaseKeys.BaseRestController]: {
@@ -1037,7 +1015,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
-      ProjectDatabaseKeys.SpringBootLdapTemplate,
 
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
