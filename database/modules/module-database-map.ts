@@ -194,8 +194,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Differentiating between defects, faults, and failures to better manage software testing and complexity",
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
+      "Developing a Java calculator application to apply test-driven development, version control procedures, documentation, and code quality assurance",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_TeamProject]: {

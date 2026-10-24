@@ -79,15 +79,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
   },
-  [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment]
-        .description,
-    category: BlogCategoriesEnum.Projects,
-    skills:
-      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
-  },
 };
 
 /**

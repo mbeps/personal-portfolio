@@ -1488,19 +1488,6 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Programming Fundamentals
-  [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
-    name: "Calculator",
-    description: `
-      This was a second year assignment focused on software engineering methodologies. 
-      The project emphasized the importance of proper version control procedures, 
-      test-driven development, documentation, and code quality assurance.`,
-    repositoryURL: "https://github.com/mbeps/Calculator-Assignment",
-    skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.JUnit],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-  },
   [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
     name: "Java Fundamentals Assignments",
     description: `
