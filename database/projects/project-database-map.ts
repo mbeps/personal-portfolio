@@ -728,7 +728,6 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       A suite of enterprise Symphony chatbots built to automate communication and operational workflows.
       Key features include AI text generation with Azure OpenAI, live message translation, webhooks, interactive polls, and automated report aggregation.
-      All services were developed with Java and Spring Boot, tested with JUnit and Mockito, and deployed using Docker and GCP.
     `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
