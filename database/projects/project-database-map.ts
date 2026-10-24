@@ -290,6 +290,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
