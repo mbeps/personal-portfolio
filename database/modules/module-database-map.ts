@@ -517,6 +517,8 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.Mathematics,
     ],
     learningOutcomes: [
       "Understanding the fundamental concepts of Machine Learning",
@@ -533,14 +535,12 @@ const modulesMap: Database<ModuleInterface> = {
       "Learning to use pipelines in Machine Learning workflows with scikit-learn",
       "Studying cross-conformal predictors and their efficiency",
       "Gaining a broad understanding of various prediction algorithms in Machine Learning",
+      "Implementing the Nearest Neighbours algorithm from scratch in Python using core mathematical principles",
+      "Applying Lasso regression and inductive conformal prediction to generate reliable predictions",
+      "Implementing Support Vector Machines, neural networks, and cross-conformal prediction algorithms",
+      "Building practical machine learning pipelines, data preprocessing routines, and visualizations using NumPy, Matplotlib, and scikit-learn",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
-    relatedMaterials: [
-      ProjectDatabaseKeys.MachineLearningAssignment1,
-      ProjectDatabaseKeys.MachineLearningAssignment2,
-      ProjectDatabaseKeys.MachineLearningAssignment3,
-      ProjectDatabaseKeys.MachineLearningLabs,
-    ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
