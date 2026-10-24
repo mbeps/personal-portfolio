@@ -59,14 +59,6 @@ export default function About() {
   const masters: CourseInterface =
     courseDatabaseMap[CourseDatabaseKeys.KCL_ArtificialIntelligence];
 
-  // Projects
-  const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
-
-  // Certificates
-  const numberOfCertificates: number = Object.keys(
-    CertificateDatabaseKeys,
-  ).length;
-
   // Featured material
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankAiEngineer,
@@ -154,14 +146,6 @@ export default function About() {
                     1 === DEVELOPER.EXPERIENCE
                       ? "1 year"
                       : `${DEVELOPER.EXPERIENCE} years`,
-                },
-                {
-                  heading: "Number of Projects",
-                  value: `${numberOfProjects}`,
-                },
-                {
-                  heading: "Number of Certificates",
-                  value: `${numberOfCertificates}`,
                 },
               ]}
               className="mx-auto grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2"
