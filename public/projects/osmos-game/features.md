@@ -1,6 +1,0 @@
-- Power-ups increase the player's speed for a limited time.
-- Time limit (optional).
-- Gravity between objects. 
-- Display scores.
-- Mass is ejected from the player when moving using the arrow keys. 
-- An enemy is split after a set time to make the gameplay fairer. 

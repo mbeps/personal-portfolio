@@ -64,8 +64,11 @@ const modulesMap: Database<ModuleInterface> = {
   [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory]: {
     name: "Programming Laboratory",
     category: ModuleYearGroupsEnum.Year1,
-    skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.SimpleGui],
-    relatedMaterials: [ProjectDatabaseKeys.OsmosGame],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.SimpleGui,
+      SkillDatabaseKeys.PyTest,
+    ],
     learningOutcomes: [
       "Understanding computational thinking and basic coding",
       "Translating problem-solving thoughts into precise instructions for computers",
@@ -77,6 +80,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Developing debugging skills to identify and resolve programming issues",
       "Working effectively in programming teams",
       "Preparing for group projects and understanding the requirements for games projects",
+      "Developing an interactive 2D game in Python with SimpleGUI, implementing custom vector physics and game mechanics",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },

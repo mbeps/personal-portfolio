@@ -1079,24 +1079,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [RoleDatabaseKeys.OpenSourceContributor],
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.OsmosGame]: {
-    name: "Osmos Game",
-    description: `
-          A simple game built with SimpleGUI for a first-year university project. 
-          We manually implemented physics using vector theory and physics concepts, relying solely on documentation due to the lack of tutorials.
-          `,
-    repositoryURL: "https://github.com/mbeps/Osmos_Game",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.SimpleGui,
-      SkillDatabaseKeys.PyTest,
-    ],
-    category: ProjectCategoriesEnum.Other,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OsmosGame).COVER,
-  },
   [ProjectDatabaseKeys.MdmAutomations]: {
     name: "MDM Automations",
     description: `

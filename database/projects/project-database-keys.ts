@@ -48,7 +48,6 @@ enum ProjectDatabaseKeys {
   LlamaCppProviderForGitHubCopilotChat = "llama-cpp-provider-for-github-copilot-chat",
   CommerzbankGenAiToOpenAiApiProxy = "commerzbank-gen-ai-to-open-ai-api-proxy",
 
-  OsmosGame = "osmos-game",
   CommerzbankTrumpNotification = "commerzbank-trump-notification",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",
   GnomeAllInOneClipboardExtension = "gnome-all-in-one-clipboard-extension",

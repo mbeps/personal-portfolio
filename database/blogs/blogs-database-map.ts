@@ -72,13 +72,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].skills,
   },
-
-  [ProjectDatabaseKeys.OsmosGame]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].name,
-    subtitle: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].description,
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
-  },
 };
 
 /**
