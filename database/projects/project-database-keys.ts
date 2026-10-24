@@ -69,7 +69,6 @@ enum ProjectDatabaseKeys {
   CommerzbankTrumpNotification = "commerzbank-trump-notification",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",
   GnomeAllInOneClipboardExtension = "gnome-all-in-one-clipboard-extension",
-  DatabasesMiniProject = "databases-mini-project",
   JwtHelper = "jwt-helper",
   AutomatedManifestPush = "automated-manifest-push",
   MdmAutomations = "mdm-automations",

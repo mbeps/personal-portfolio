@@ -278,9 +278,9 @@ const modulesMap: Database<ModuleInterface> = {
       "Learning intermediate SQL",
       "Understanding JDBC",
       "Learning normalisation theory",
+      "Implementing a normalised PostgreSQL database schema and executing manual SQL CRUD operations in Java via JDBC",
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.DatabasesMiniProject,
       CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,

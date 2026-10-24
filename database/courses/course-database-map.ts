@@ -84,7 +84,6 @@ const courseMap: Database<CourseInterface> = {
       ProjectDatabaseKeys.MachineLearningLabs,
       ProjectDatabaseKeys.ComputationalFinanceAssignment,
       ProjectDatabaseKeys.OsmosGame,
-      ProjectDatabaseKeys.DatabasesMiniProject,
     ],
   },
 };

@@ -1487,17 +1487,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
 
-  [ProjectDatabaseKeys.DatabasesMiniProject]: {
-    name: "Database Mini Project",
-    description: "Learning to interact with a database using Java.",
-    repositoryURL: "https://github.com/mbeps/DatabasesMiniProject",
-    skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.PostgreSql],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-  },
-
   //^ Other Projects
   [ProjectDatabaseKeys.CommerzbankTrumpNotification]: {
     name: "Commerzbank Trump Notification",
