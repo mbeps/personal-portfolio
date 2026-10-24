@@ -22,9 +22,6 @@ enum ProjectDatabaseKeys {
   CommerzbankRates = "commerzbank-rates",
   CommerzbankPhoenixFinanceEnrichment = "commerzbank-phoenix-finance-enrichment",
   CommerzbankDataNotification = "commerzbank-data-notifications",
-  OAuthNextJsSpringBoot = "oauth-nextjs-spring-boot",
-  NextJsBetterAuthTemplate = "nextjs-better-auth-template",
-  NextJsAuthJsTemplate = "nextjs-authjs-template",
 
   //^ Backend Projects
   AuthenticationMicroService = "authentication-microservice",

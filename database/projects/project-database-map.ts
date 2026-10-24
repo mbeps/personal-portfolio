@@ -327,95 +327,6 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
 
-  //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
-    name: "OAuth Next.js & Spring Boot",
-    description: `
-      A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
-      Uses CORS, JWTs, and secure cookie storage.
-      `,
-    repositoryURL: "https://github.com/mbeps/oauth-springboot-nextjs",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.SpringOAuth,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-    relatedMaterials: [ProjectDatabaseKeys.AuthenticationMicroService],
-  },
-  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
-    name: "Auth.JS Template",
-    description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
-      `,
-    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.AuthJs,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-
-  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
-    name: "Better Auth Template",
-    description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
-      `,
-    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.BetterAuth,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Drizzle,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-  },
   [ProjectDatabaseKeys.Noodle]: {
     name: "Noodle",
     description: `
@@ -1179,7 +1090,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.CommerzbankDataNotification,
@@ -1207,7 +1117,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.AuthenticationMicroService,
