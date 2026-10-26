@@ -15,7 +15,6 @@ import Socials from "@/components/socials/socials";
 import DetailsTable from "@/components/ui/details-table";
 import { DEVELOPER } from "@/config/developer-info";
 import { PATHS } from "@/config/paths";
-import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import companyDatabaseMap from "@/database/companies/company-database-map";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import courseDatabaseMap from "@/database/courses/course-database-map";
@@ -59,14 +58,6 @@ export default function About() {
   const masters: CourseInterface =
     courseDatabaseMap[CourseDatabaseKeys.KCL_ArtificialIntelligence];
 
-  // Projects
-  const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
-
-  // Certificates
-  const numberOfCertificates: number = Object.keys(
-    CertificateDatabaseKeys,
-  ).length;
-
   // Featured material
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankAiEngineer,
@@ -83,15 +74,8 @@ export default function About() {
     ProjectDatabaseKeys.CommerzbankRates,
 
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-    ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
     ProjectDatabaseKeys.LinuxGnomeMcp,
     ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-
-    ProjectDatabaseKeys.SymphonyTranslateBot,
-    ProjectDatabaseKeys.SymphonyPollBot,
-    ProjectDatabaseKeys.SymphonyBlogBot,
-    ProjectDatabaseKeys.SymphonyRssBot,
-    ProjectDatabaseKeys.SymphonyWebhookBot,
   ];
 
   return (
@@ -161,14 +145,6 @@ export default function About() {
                     1 === DEVELOPER.EXPERIENCE
                       ? "1 year"
                       : `${DEVELOPER.EXPERIENCE} years`,
-                },
-                {
-                  heading: "Number of Projects",
-                  value: `${numberOfProjects}`,
-                },
-                {
-                  heading: "Number of Certificates",
-                  value: `${numberOfCertificates}`,
                 },
               ]}
               className="mx-auto grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2"

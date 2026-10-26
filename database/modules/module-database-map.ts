@@ -24,7 +24,6 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Object Oriented Programming 1",
     category: ModuleYearGroupsEnum.Year1,
     skills: [SkillDatabaseKeys.Java],
-    relatedMaterials: [ProjectDatabaseKeys.JavaFundamentalsAssignments],
     learningOutcomes: [
       "Introducing basic concepts of computer programming",
       "Understanding the importance and role of data in programming",
@@ -44,10 +43,7 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Object Oriented Programming 2",
     category: ModuleYearGroupsEnum.Year1,
     skills: [SkillDatabaseKeys.Java],
-    relatedMaterials: [
-      ProjectDatabaseKeys.JavaFundamentalsAssignments,
-      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
-    ],
+    relatedMaterials: [CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass],
     learningOutcomes: [
       "Exploring enumerated types and recursion in Java",
       "Defining recursive data types and handling exceptions",
@@ -68,8 +64,11 @@ const modulesMap: Database<ModuleInterface> = {
   [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory]: {
     name: "Programming Laboratory",
     category: ModuleYearGroupsEnum.Year1,
-    skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.SimpleGui],
-    relatedMaterials: [ProjectDatabaseKeys.OsmosGame],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.SimpleGui,
+      SkillDatabaseKeys.PyTest,
+    ],
     learningOutcomes: [
       "Understanding computational thinking and basic coding",
       "Translating problem-solving thoughts into precise instructions for computers",
@@ -81,6 +80,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Developing debugging skills to identify and resolve programming issues",
       "Working effectively in programming teams",
       "Preparing for group projects and understanding the requirements for games projects",
+      "Developing an interactive 2D game in Python with SimpleGUI, implementing custom vector physics and game mechanics",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
@@ -194,8 +194,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Differentiating between defects, faults, and failures to better manage software testing and complexity",
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
+      "Developing a Java calculator application to apply test-driven development, version control procedures, documentation, and code quality assurance",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_TeamProject]: {
@@ -282,9 +282,9 @@ const modulesMap: Database<ModuleInterface> = {
       "Learning intermediate SQL",
       "Understanding JDBC",
       "Learning normalisation theory",
+      "Implementing a normalised PostgreSQL database schema and executing manual SQL CRUD operations in Java via JDBC",
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.DatabasesMiniProject,
       CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
@@ -310,7 +310,6 @@ const modulesMap: Database<ModuleInterface> = {
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
     relatedMaterials: [
-      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
       CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms,
     ],
@@ -522,6 +521,8 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.Mathematics,
     ],
     learningOutcomes: [
       "Understanding the fundamental concepts of Machine Learning",
@@ -538,14 +539,12 @@ const modulesMap: Database<ModuleInterface> = {
       "Learning to use pipelines in Machine Learning workflows with scikit-learn",
       "Studying cross-conformal predictors and their efficiency",
       "Gaining a broad understanding of various prediction algorithms in Machine Learning",
+      "Implementing the Nearest Neighbours algorithm from scratch in Python using core mathematical principles",
+      "Applying Lasso regression and inductive conformal prediction to generate reliable predictions",
+      "Implementing Support Vector Machines, neural networks, and cross-conformal prediction algorithms",
+      "Building practical machine learning pipelines, data preprocessing routines, and visualizations using NumPy, Matplotlib, and scikit-learn",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
-    relatedMaterials: [
-      ProjectDatabaseKeys.MachineLearningAssignment1,
-      ProjectDatabaseKeys.MachineLearningAssignment2,
-      ProjectDatabaseKeys.MachineLearningAssignment3,
-      ProjectDatabaseKeys.MachineLearningLabs,
-    ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
@@ -556,6 +555,11 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Calculus,
       SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
     ],
     learningOutcomes: [
       "Understanding the main functions of the financial system and the role of this module within it",
@@ -576,8 +580,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Calculating VaR using different methods and understanding the impact of diversification on VaR",
       "Discussing the applicability and limitations of financial models in the real-world context",
       "Exploring market efficiency hypotheses and current trends in finance",
+      "Implementing option valuation models in Python using Black-Scholes, binomial trees, and Monte Carlo simulations, analyzing put-call parity and arbitrage opportunities",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.ComputationalFinanceAssignment],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_SecurityManagement]: {
@@ -630,8 +634,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Evaluating different AI approaches for reasoning under uncertainty",
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
+      "Implementing an intelligent Pacman agent using Markov Decision Processes and Value Iteration to make optimal decisions in stochastic environments",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -686,10 +690,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Evaluating different object recognition techniques and their applications",
       "Interpreting biological vision processes and comparing them to artificial vision systems",
       "Implementing core computer vision algorithms and understanding their limitations",
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
-      ProjectDatabaseKeys.ComputerVisionQuizzes,
+      "Implementing image segmentation in MATLAB using biological vision models, including Simple and Complex cells and Gabor filters",
+      "Applying low-level and mid-level computer vision methods in MATLAB, including edge detection, image filtering, and segmentation",
     ],
   },
   [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
@@ -823,8 +825,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Addressing common issues in machine learning like overfitting and class imbalance",
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
+      "Building a handwritten digit classifier using Convolutional Neural Networks (CNNs) in TensorFlow and Keras, applying data augmentation, batch normalisation, and dropout to optimise performance",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.HandWrittenDigitClassifier],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
     name: "Machine Learning",
@@ -832,6 +834,8 @@ const modulesMap: Database<ModuleInterface> = {
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -847,6 +851,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.ComputerVision,
     ],
     learningOutcomes: [
       "Understanding fundamental machine learning concepts and algorithms",
@@ -861,10 +866,8 @@ const modulesMap: Database<ModuleInterface> = {
       "Analyzing the ethical implications of machine learning applications",
       "Implementing learning from demonstration techniques",
       "Addressing challenges in machine learning such as overfitting and bias",
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-      ProjectDatabaseKeys.CustomQLearningAgent,
+      "Building a neural network from scratch in Python to train a Pacman agent, applying batch normalisation, dropout, momentum, and learning rate decay",
+      "Implementing a custom Q-learning agent from mathematical foundations to navigate a Pacman environment",
     ],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {

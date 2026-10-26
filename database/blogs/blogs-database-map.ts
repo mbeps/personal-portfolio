@@ -47,7 +47,12 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Symphony,
     ],
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.SymphonyBots,
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+      ProjectDatabaseKeys.CommerzbankRates,
+    ],
   },
 
   //^ Projects Blogs
@@ -57,36 +62,6 @@ const blogsMap: Database<BlogInterface> = {
       projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].description,
     category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].skills,
-  },
-  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].description,
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].skills,
-  },
-  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].description,
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].skills,
-  },
-
-  [ProjectDatabaseKeys.OsmosGame]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].name,
-    subtitle: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].description,
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
-  },
-  [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment]
-        .description,
-    category: BlogCategoriesEnum.Projects,
-    skills:
-      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
   },
 };
 

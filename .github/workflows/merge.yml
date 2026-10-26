@@ -14,37 +14,22 @@ jobs:
         node-version: ['24.x', '26.x']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm install --frozen-lockfile
 
       - name: Run Linter & Formatter Check (Biome)
-        run: ${{ steps.detect-package-manager.outputs.runner }} biome ci .
+        run: pnpm run ci
 
   build:
     needs: lint
@@ -55,37 +40,22 @@ jobs:
         node-version: ['24.x', '26.x']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm install --frozen-lockfile
 
-      - name: Build 
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build --turbopack
+      - name: Build
+        run: pnpm build
 
   test:
     needs: build
@@ -96,44 +66,29 @@ jobs:
         node-version: ['24.x', '26.x']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm install --frozen-lockfile
 
       - name: Run unit tests (Vitest) with coverage threshold
-        run: yarn test:coverage
+        run: pnpm test:coverage
 
   docker:
     name: Docker Compose
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Docker Compose
         run: |
@@ -143,7 +98,7 @@ jobs:
       - name: Run Docker Compose
         run: |
           cd docker
-          docker-compose -f docker-compose.yml up -d
+          docker compose -f docker-compose.yml up -d --build
 
       - name: Run tests
         run: |
@@ -152,4 +107,4 @@ jobs:
       - name: Stop Docker Compose
         run: |
           cd docker
-          docker-compose -f docker-compose.yml down
+          docker compose -f docker-compose.yml down

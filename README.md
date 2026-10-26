@@ -65,6 +65,7 @@ Extensive JSDoc now annotates core hooks, filters, and data interfaces so contri
 # **Requirements**
 These are the requirements needed to run the project:
 - Node 24 LTS
+- pnpm 12+
 
 # **Tech Stack**
 
@@ -100,15 +101,15 @@ cd personal-portfolio
 
 Then, install the project dependencies by running:
 ```sh
-yarn install
+pnpm install
 ```
 
-## 4. **Run the Application**
+## 3. **Run the Application**
 
 Once you've set up your environment variables, you can run the application using the following command:
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 The application should now be running at http://localhost:3000.

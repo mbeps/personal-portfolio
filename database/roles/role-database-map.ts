@@ -42,9 +42,8 @@ const rolesMap: Database<RoleInterface> = {
     endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
     relatedMaterials: [
       ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
       ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy,
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
@@ -106,28 +105,17 @@ const rolesMap: Database<RoleInterface> = {
 
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+      ProjectDatabaseKeys.SymphonyBots,
 
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
 
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyWebhookBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
-      ProjectDatabaseKeys.SymphonyPollBot,
-      ProjectDatabaseKeys.SymphonyRssBot,
-      ProjectDatabaseKeys.SymphonyBlogBot,
-      ProjectDatabaseKeys.SymphonyInteractiveBot,
-      ProjectDatabaseKeys.SymphonyHeadlessBot,
-
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
-
-      ProjectDatabaseKeys.SpringDataJPATemplate,
-      ProjectDatabaseKeys.SpringDataMongoTemplate,
-      ProjectDatabaseKeys.SpringBootLdapTemplate,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },

@@ -1,7 +1,6 @@
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
-import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
@@ -41,7 +40,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.MachineLearningAlgorithms],
     description: `
       Learning and practicing various Machine Learning algorithms and techniques. This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning. Some additional content in the field of Deep Learning and Neural Networks are also covered. `,
     learningOutcomes: [
@@ -101,9 +99,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
-    ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ],
     description: `
       This course teaches the fundamentals and advanced techniques of AI, including Q-Learning, Deep Learning, and Large Language Models. 
@@ -213,7 +208,6 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       description: `
         This course covers the basics of Python and data analysis, including visualization and statistical methods. It teaches machine learning techniques such as regression, clustering, classification, and deep learning with practical applications. You will also learn about using advanced tools like Spark, Transformers, and OpenAI APIs for real-world data processing and model deployment.`,
-      relatedMaterials: [ProjectDatabaseKeys.MachineLearningDataScienceLab],
     },
   [CertificateDatabaseKeys.LinkedInAppliedArtificialIntelligenceAlgorithms]: {
     name: "Applied Artificial Intelligence: Algorithms",
@@ -1780,7 +1774,6 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     relatedMaterials: [
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
-      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
     ],
   },
@@ -2940,7 +2933,6 @@ const certificateMap: Database<CertificateInterface> = {
       relatedMaterials: [
         ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
         CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
-        ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
       ],
     },
   [CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms]: {
@@ -3448,14 +3440,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Implementing message templating in BDK for Java",
       "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
     ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyWebhookBot,
-      ProjectDatabaseKeys.SymphonyInteractiveBot,
-      ProjectDatabaseKeys.SymphonyHeadlessBot,
-      ProjectDatabaseKeys.SymphonyPollBot,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython]: {
     name: "Symphony Certified Bot Developer (Python)",

@@ -55,7 +55,7 @@ export const ROUTES = {
     path: PROJECTS_BASE,
     name: "Projects" as const,
     description:
-      "Wide catalogue of projects showcasing my skills and expertise in different technologies and domains." as const,
+      "A curated selection of projects highlighting my expertise across diverse technologies and domains." as const,
     isMain: true as const,
     detail: (key: ProjectDatabaseKeys): `/projects/${ProjectDatabaseKeys}` =>
       `${PROJECTS_BASE}/${key}`,
@@ -68,7 +68,7 @@ export const ROUTES = {
     path: EXPERIENCE_BASE,
     name: "Experience" as const,
     description: `
-    Overview of my professional experience, highlighting roles, responsibilities, and achievements across different organisations.
+    A curated overview of my professional experience, highlighting key roles, responsibilities, and achievements across diverse organizations.
   ` as const,
     isMain: true as const,
     detail: (key: RoleDatabaseKeys): `/experience/${RoleDatabaseKeys}` =>
@@ -78,7 +78,7 @@ export const ROUTES = {
     path: EDUCATION_BASE,
     name: "Education" as const,
     description: `
-    Selection of my academic qualifications, detailing institutions attended, degrees earned, modules studied and completed projects.
+    A curated selection of my academic qualifications, detailing institutions attended, degrees earned, modules studied and completed projects.
   ` as const,
     isMain: true as const,
     detail: (key: CourseDatabaseKeys): `/education/${CourseDatabaseKeys}` =>

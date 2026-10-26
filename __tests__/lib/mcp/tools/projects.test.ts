@@ -82,14 +82,14 @@ describe("MCP Tools: Projects", () => {
 
     it("filters projects using search query", async () => {
       const response = await tools.list_projects.handler({
-        search: "Forum Discussions",
+        search: "Car Dealership",
         archived: false,
       });
       const data = JSON.parse(response.content[0].text);
       expect(data.total).toBeGreaterThanOrEqual(1);
       expect(
         data.projects.some(
-          (p: { name: string }) => p.name === "Forum Discussions",
+          (p: { name: string }) => p.name === "Car Dealership",
         ),
       ).toBe(true);
     });

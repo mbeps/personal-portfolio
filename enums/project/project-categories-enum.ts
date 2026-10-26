@@ -8,9 +8,6 @@ enum ProjectCategoriesEnum {
   ArtificialIntelligence = "Artificial Intelligence (AI)",
   FullStackAndArtificialIntelligence = "Full-Stack Dev & AI",
   Libraries = "Libraries",
-  ProgrammingFundamentals = "Programming Fundamentals",
-  Algorithms = "Algorithms",
-  Mathematics = "Mathematics",
   Other = "Other",
 }
 

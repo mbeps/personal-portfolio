@@ -1,4 +1,0 @@
-- View statuses (Red, Amber and Green) for a list of applications
-- Subscribe to and unsubscribe from applications to monitor a subset of applications
-- Add new applications to the system by just using IDs (names automatically fetched from ServiceNow)
-- Allow viewing a list of ServiceNow tickets associated with each app

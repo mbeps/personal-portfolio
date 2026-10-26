@@ -13,6 +13,7 @@ import SkillTypesEnum from "@/enums/skill/skill-types-enum";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
 import type Database from "@/types/database/database";
+import BlogDatabaseKeys from "../blogs/blog-database-keys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -21,13 +22,43 @@ import type Database from "@/types/database/database";
  */
 const projectMap: Database<ProjectInterface> = {
   //^ Full-Stack Projects
+
+  [ProjectDatabaseKeys.CarDealership]: {
+    name: "Car Dealership",
+    description: `
+      Enables customers to browse vehicle inventory, filter by specifications, and schedule test drives.
+      Dealership staff and automated assistants manage listings, reservations, and business operations through a central dashboard.
+      `,
+    repositoryURL: "https://github.com/mbeps/car-dealership",
+    deploymentURL: "https://car-dealership.maruf-bepary.com/",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: "Forum Discussions",
+    archived: true,
     description: `
-      For a final year university project, 
-      a social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them.
-      Tested on CRUD and software engineering principles.
+      A community platform where users create dedicated groups, publish posts, and participate in threaded discussions.
+      Features include voting, media sharing, bookmarking, and personalized content feeds.
       `,
     repositoryURL: "https://github.com/mbeps/next_discussion_platform",
     deploymentURL: "https://forum-discussions.maruf-bepary.com/",
@@ -54,132 +85,11 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Academic,
   },
-  [ProjectDatabaseKeys.CarDealership]: {
-    name: "Car Dealership",
-    description: `
-      Car dealership website for a client.
-      Users can browse, search, and filter cars.
-      Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
-      `,
-    repositoryURL: "https://github.com/mbeps/car-dealership",
-    // deploymentURL: "https://www.mn-ltd.uk/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.TypeOrm,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.RealTimeMessaging]: {
-    name: "Real-Time Messaging",
-    description: `
-      A custom back-end learning project involved creating a straightforward real-time messaging app. 
-      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
-      `,
-    repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
-    deploymentURL: "https://messaging.maruf-bepary.com/",
-
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.AuthJs,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Pusher,
-      SkillDatabaseKeys.Cloudinary,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.HeadlessUi,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.MusicStreaming]: {
-    name: "Music Streaming",
-    description: `
-      My first major project using Supabase was a basic music streaming site. 
-      Users can upload songs, search and listen to music, as well as like the songs they enjoy.
-      `,
-    repositoryURL: `https://github.com/mbeps/drumroll-music`,
-    deploymentURL: "https://music.maruf-bepary.com/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MusicStreaming).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.RichTextNotes]: {
-    name: "Rich-Text Notes",
-    description: `
-      A note-taking app where users can sign up, log in, and reset passwords easily. 
-      It supports rich text formatting, image additions, and publishing notes publicly. 
-      Users alse organize notes into nested notebooks.`,
-    repositoryURL: "https://github.com/mbeps/joker-notes",
-    deploymentURL: "https://notes.maruf-bepary.com/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Convex,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.EdgeStore,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
   [ProjectDatabaseKeys.CommerzbankAppStatus]: {
     name: "Commerzbank App Status",
     description: `
-      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
-      Users are able to create personal subscriptions groups with other members. 
+      Monitors the operational health and uptime of enterprise services across the organization.
+      Users track critical systems through personal subscriptions and team groups, with direct incident reporting and status announcements.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -211,47 +121,11 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
   },
-  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
-    name: "Commerzbank Phoenix Finance Enrichment",
-    description: `
-        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
-    `,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.FastApi,
-
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Grafana,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
-    ).COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      RoleDatabaseKeys.CommerzbankAiEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-    ],
-  },
   [ProjectDatabaseKeys.CommerzbankRates]: {
     name: "Commerzbank Rates",
     description: `
-      A web application that provides rates to business users and allows exporting and viewing historical data.
-      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
+      Delivers daily risk-free and forward-looking interest rates sourced from financial market data providers.
+      Business users can analyze historical trends, export spreadsheet reports, and configure automated threshold alerts.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -288,16 +162,88 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
   },
-
-  //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.OnlineArticles]: {
-    name: "Online Articles",
+  [ProjectDatabaseKeys.CommerzbankDataNotification]: {
+    name: "Commerzbank Data Notification",
     description: `
-      To learn Supabase, I developed a simple website for reading and writing articles. 
-      Users can read, create, and delete articles. 
-      This project paved the way for using Supabase in subsequent projects.
+      Cross-references market data vendor notices against entitlement reports to detect impacted applications and users.
+      Verifies instrument code usage, tracks remediation workflows, and generates compliance audit reports.
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    type: ProjectTypeEnum.Professional,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+    ).COVER,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
+    name: "Commerzbank Phoenix Finance Enrichment",
+    description: `
+      Aggregates and enriches corporate financial records across multiple data providers.
+      Analysts can query companies, process bulk entity spreadsheets, and export consolidated records.
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.FastApi,
+
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+    ).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.MusicStreaming]: {
+    name: "Music Streaming",
+    description: `
+      An audio streaming platform for discovering artists, exploring albums, and playing tracks.
+      Listeners can build custom playlists with drag-and-drop reordering and curate their favorite songs.
       `,
-    repositoryURL: "https://github.com/mbeps/sideshow-articles",
+    repositoryURL: `https://github.com/mbeps/drumroll-music`,
+    deploymentURL: "https://music.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -305,108 +251,89 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Supabase,
       SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.NextUi,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OnlineArticles).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
-    name: "OAuth Next.js & Spring Boot",
-    description: `
-      A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
-      Uses CORS, JWTs, and secure cookie storage.
-      `,
-    repositoryURL: "https://github.com/mbeps/oauth-springboot-nextjs",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.SpringOAuth,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
       SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
+      SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
-      .COVER,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MusicStreaming).COVER,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [ProjectDatabaseKeys.AuthenticationMicroService],
   },
-  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
-    name: "Auth.JS Template",
+  [ProjectDatabaseKeys.RichTextNotes]: {
+    name: "Rich-Text Notes",
     description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
-      `,
-    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
+      A workspace for creating formatted documents with embedded media and organizing them into hierarchical notebooks.
+      Notes can be published to the web or managed through automated AI assistant integrations.
+    `,
+    repositoryURL: "https://github.com/mbeps/joker-notes",
+    deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.AuthJs,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
       SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Convex,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.EdgeStore,
+      SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
-      .COVER,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
     type: ProjectTypeEnum.Personal,
   },
-
-  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
-    name: "Better Auth Template",
+  [ProjectDatabaseKeys.RealTimeMessaging]: {
+    name: "Real-Time Messaging",
     description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
+      Enables instant communication through private one-on-one chats and collaborative group conversations.
+      Users can share images inline, monitor online presence, and customize their profiles.
       `,
-    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
+    repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
+    deploymentURL: "https://messaging.maruf-bepary.com/",
+    archived: true,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.BetterAuth,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.MongoDb,
       SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Pusher,
+      SkillDatabaseKeys.Cloudinary,
       SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.HeadlessUi,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
+      SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
-      .COVER,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
     type: ProjectTypeEnum.Personal,
   },
+
   [ProjectDatabaseKeys.Noodle]: {
     name: "Noodle",
     description: `
-      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
-      This app helps students manage tasks, assignments, exams, and store notes and resources.
+      An open-source study platform designed to streamline academic organization for students.
+      Centralizes course materials, tracks assignments and exam schedules, and organizes study notes.
       `,
     repositoryURL: "https://github.com/ixahmedxi/noodle",
     deploymentURL: "https://noodle.run/",
@@ -435,9 +362,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
     description: `
-    Specifically looked into and improved hybrid-reasoning models using LoRA and novel hybrid-training technique.
-    Regular supervised fine-tuning on reasoning models causes them to forget their reasoning capabilities.
-    This is solved using my novel hybrid training technique.`,
+      Investigates and prevents the loss of reasoning capabilities in language models during specialized fine-tuning.
+      Introduces a hybrid training approach that preserves structured reasoning while adapting to domain-specific tasks.
+    `,
     repositoryURL:
       "https://github.com/stars/mbeps/lists/cultural-alignment-in-llms",
     skills: [
@@ -466,8 +393,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.ExcelSpreadsheetMCP]: {
     name: "Excel Spreadsheet MCP Server",
     description: `
-      An MCP server which allows AI agents to connect and interact with Excel spreadsheets.
-      This allows the AI agents to perform various tasks such as reading and writing data, performing calculations, and more.
+      Connects AI assistants directly to spreadsheets for automated data manipulation, styling, and financial modeling.
+      Enables autonomous agents to execute complex formulas, generate multi-series charts, and run statistical analysis.
       `,
     repositoryURL: "https://github.com/mbeps/excel-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -485,8 +412,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LinuxGnomeMcp]: {
     name: "Linux GNOME MCP Server",
     description: `
-      An MCP server which allows AI agents to connect and interact with the GNOME desktop environment on Linux.
-      This allows the AI agents to perform various tasks such as opening applications, changing themes, and more.
+      Enables AI assistants to interact with and control the desktop environment on Linux systems.
+      Agents can launch applications, capture screenshots, manage windows, adjust system settings, and inspect hardware performance metrics.
       `,
     repositoryURL: "https://github.com/mbeps/linux-gnome-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -502,8 +429,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat]: {
     name: "Llama.cpp Provider for GitHub Copilot Chat",
     description: `
-    Allows using local Llama.cpp models within GitHub Copilot for VS Code. 
-    Saves costs and provides more control over the models used in Copilot Chat, enabling private and customizable AI assistance for developers.
+      Integrates self-hosted language models into the code editor's chat interface with streaming and tool support.
+      Provides developers with complete data privacy, reduced inference costs, and flexible model selection.
     `,
     repositoryURL: "https://github.com/mbeps/llama-vscode-chat",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -521,37 +448,11 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
     ).COVER,
   },
-  [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
-    name: "Handwritten Digit Classifier",
-    description: `
-      A handwritten digit classifier using built using a Convolutional Neural Network (CNN).
-      Used various techniques such as data augmentation, batch normalisation, and dropout to improve the model's performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/pattern-recognition-neural-network-coursework-1",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-    ],
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.ComputerVision,
-    ],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.HandWrittenDigitClassifier,
-    ).COVER,
-  },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
     description: `
-      A compact implementation of a Vision Transformer (ViT). The code is written for learning and experiments.
+      A standalone implementation of transformer architectures adapted for image classification from first principles.
+      Processes image patch embeddings through multi-head self-attention mechanisms to perform visual recognition.
       `,
     repositoryURL: "https://github.com/mbeps/vision-transformer",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -571,424 +472,11 @@ const projectMap: Database<ProjectInterface> = {
     ).COVER,
     archived: true,
   },
-  [ProjectDatabaseKeys.AdultIncomePrediction]: {
-    name: "Adult Income Prediction",
-    description: `
-      Comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
-      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
-    repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AdultIncomePrediction)
-      .COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.HousePricePrediction]: {
-    name: "House Price Prediction",
-    description: `
-      Comparing various regression algorithms to predict house prices in relation to the distance from the coast.
-      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
-    repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.HousePricePrediction)
-      .COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
-    name: "Custom Neural Network Classifier",
-    description: `
-      Built a neural network from scratch to teach a Pacman agent.
-      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-    ],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
-    name: "Machine Learning Algorithms",
-    description: `
-      Practicing various algorithms and techniques.
-      This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
-    `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-    ],
-    archived: true,
-    relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.MachineLearningAlgorithms,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
-    name: "Reinforcement Learning Lab",
-    description: `
-      Practicing various Reinforcement Learning algorithms and techniques.
-      This includes Q-Learning, Deep Q-Learning, and Asynchronous Advantage Actor-Critic (A3C) algorithms.
-    `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: "https://github.com/mbeps/Reinforcement-Learning",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.PyTorch,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ReinforcementLearning,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-    ],
-    archived: true,
-    relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.CustomQLearningAgent]: {
-    name: "Custom Q-Learning Agent",
-    description: `
-      A custom Q-Learning agent learns to play Pacman.
-      Required foundational Mathematics knowledge and understanding of the Q-Learning algorithm.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-coursework-2-pacman",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ReinforcementLearning,
-      SkillDatabaseKeys.DeepLearning,
-    ],
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CustomQLearningAgent)
-      .COVER,
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment1]: {
-    name: "Machine Learning Assignment 1",
-    description: `
-      Implementing algorithms from scratch such as the Nearest Neighbours algorithm.
-      Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
-      `,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-1",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.MachineLearningAssignment1,
-    ).COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment2]: {
-    name: "Machine Learning Assignment 2",
-    description: `
-      Be able to use and implement algorithms, 
-      with the Lasso and inductive conformal prediction algorithms as examples. 
-    `,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-2",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.MachineLearningAssignment2,
-    ).COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment3]: {
-    name: "Machine Learning Assignment 3",
-    description: `
-      Be able to use and implement algorithms, 
-      with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
-      `,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-3",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.MachineLearningAssignment3,
-    ).COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningLabs]: {
-    name: "Machine Learning Labs",
-    description: `
-      Implemented various algorithms and techniques learnt during the course, 
-      such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
-      kernels, Neural Networks, SVMs, etc.`,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Labs-Questions",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.Mathematics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MachineLearningLabs)
-      .COVER,
-  },
-  [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
-    name: "Computational Finance Assignment",
-    description: `
-      Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
-      Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
-    repositoryURL: "https://github.com/mbeps/Computation_Finance_Assignment",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.Probability,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Mechanics,
-    ],
-    archived: true,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.ComputationalFinanceAssignment,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
-    name: "Machine Learning & Data Science Lab",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    description: `
-      Focusing on learning generative models, using third-party models and using advanced techniques. 
-      This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
-    repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-    ],
-    archived: true,
-    relatedMaterials: [
-      CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
-    ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.MachineLearningDataScienceLab,
-    ).COVER,
-  },
-
-  [ProjectDatabaseKeys.MarkovDecisionAgent]: {
-    name: "Markov Decision Agent",
-    description: `
-      Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
-      Uses Markov Decision Processes, Value Iteration and other enhancements.
-      `,
-    repositoryURL: "https://github.com/mbeps/pacman-assignment",
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
-    ],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MarkovDecisionAgent)
-      .COVER,
-  },
-  [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
-    name: "Computer Vision Image Segmentation",
-    description: `
-      Segmenting images using various techniques.
-      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: PATHS.PROJECTS(
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
-    ).COVER,
-  },
-  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
-    name: "Computer Vision Quizzes",
-    description: `
-      Solutions to quizzes where various low-level and mid-level vision techniques were covered.
-      These techniques include edge detection, image segmentation, and image filtering.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ComputerVisionQuizzes)
-      .COVER,
-  },
-  [ProjectDatabaseKeys.SimpleAIResearchAgent]: {
-    name: "Simple AI Research Agent",
-    description: `
-      A simple AI research agent for experimenting tools, APIs and techniques.
-      Agent can research using web, Wikipedia and save to a file.
-      `,
-    repositoryURL: "https://github.com/mbeps/simple-python-ai-research-agent",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.LangChain,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Personal,
-    archived: true,
-  },
   [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
     name: "Commerzbank AI Proxy",
     description: `
-      A proxy service that converts the internal GenAI API to OpenAI compatible API format with streaming and tool calls. 
-      This allows internal API to be used with industry standard AI tools and clients.
+      Translates proprietary internal generative AI endpoints into standardized streaming and tool-calling interfaces.
+      Enables enterprise development teams to connect standard developer tooling and assistants to private corporate models.
       `,
     skills: [
       SkillDatabaseKeys.Python,
@@ -1006,9 +494,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AiChatClient]: {
     name: "AI Chat Client",
     description: `
-      A chat client that allows users to have conversations with AI models.
-      The client supports various AI models, access to built-in tools, external MCPs, knowlegebases, custom workflows, projects, prompts, etc.
-      It is a very feature-rich client.
+      A conversational workspace featuring branching message trees, sidecar visual artifacts, and multi-model support.
+      Integrates document retrieval for contextual search, slash-command prompt shortcuts, and extensible external tools.
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/ai-client",
@@ -1040,9 +527,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AiWorkflowAutomations]: {
     name: "AI Workflow Automations",
     description: `
-    Runs AI driven automations based on triggers. 
-    These triggers can be automatic (events) or manual.
-    Allows regular users to easily create and run AI driven automations without any technical knowledge, making AI more accessible and useful for everyone.
+      A visual node editor for designing and running multi-step automation pipelines triggered by schedules or webhooks.
+      Connects language models with third-party messaging services and custom actions in durable execution graphs.
     `,
     repositoryURL: "https://github.com/mbeps/ai-workflow-automations",
     deploymentURL: "https://ai-workflow-automations.maruf-bepary.com",
@@ -1074,9 +560,10 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.AiGenerations]: {
     name: "AI Generations",
+    archived: true,
     description: `
-      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
-      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+      A multi-modal content creation platform providing conversation, code synthesis, and image generation.
+      Users can customize prompt parameters and manage their usage through tier-based subscriptions.
     `,
     repositoryURL: "https://github.com/mbeps/magician-ai",
     skills: [
@@ -1106,10 +593,11 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.AiQuizzes]: {
     name: "AI Quizzes",
+    archived: true,
     description: `
-      A platform for dynamic quiz generation. 
-      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
-      With immediate feedback and score tracking, users enhance their understanding.`,
+      Generates customized quizzes across diverse topics in multiple-choice and fill-in-the-blank formats.
+      Delivers immediate answer feedback, scoring metrics, and historical performance tracking.
+    `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -1138,8 +626,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AuthenticationMicroService]: {
     name: "Authentication Microservice",
     description: `
-      A microservice providing authentication (such as email/password and OAuth) to various applications.
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      Centralizes identity verification and role-based access control across internal enterprise applications.
+      Manages token lifecycles, session validation, and user profile permissions to reduce authentication redundancy.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -1159,7 +647,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.CommerzbankDataNotification,
@@ -1170,8 +657,10 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.EntraMockService]: {
     name: "Entra Mock Service",
+    archived: true,
     description: `
-      A mock service for simulating Entra authentication flows. This is used during development as Entra does not work in local environments. Mock users with various roles and permissions can be created to test different scenarios.
+      Simulates enterprise identity provider authentication flows for local testing and development environments.
+      Allows developers to configure synthetic user accounts with custom roles and permissions to test authorization scenarios offline.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -1185,7 +674,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.AuthenticationMicroService,
@@ -1195,8 +683,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.EmailMicroService]: {
     name: "Email Microservice",
     description: `
-      A microservice providing functionality to send emails for various applications and services. 
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      A centralized service for dispatching transactional emails and system notifications across enterprise applications.
+      Consolidates templating, delivery tracking, and connection pooling into a shared messaging utility.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -1216,8 +704,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LdapPermissionsMicroService]: {
     name: "LDAP Permissions Microservice",
     description: `
-      A microservice providing functionality of view permissions for users based on on-prem LDAP roles. 
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      Resolves and caches user permissions and organizational directory roles for downstream internal services.
+      Streamlines access evaluation across applications by providing a unified permission querying endpoint.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -1231,31 +719,32 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
-      ProjectDatabaseKeys.SpringBootLdapTemplate,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
     type: ProjectTypeEnum.Professional,
   },
-  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
-    name: "Symphony Translate Bot",
+  [ProjectDatabaseKeys.SymphonyBots]: {
+    name: "Symphony Bots",
     description: `
-      A Symphony bot that translates messages in a Symphony chatroom.
-      Replaces the old bot which was originally built using the outdated SDK.
-      Much faster, more reliable, and easier to maintain and more features compared to the old bot.
-      `,
+      A suite of enterprise chatbots designed to automate communication and operational workflows for financial trading desks.
+      Features include live message translation, interactive polling, automated report distribution, and conversational AI assistance.
+    `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.SpringDataMongoDb,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
@@ -1263,230 +752,16 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankAiEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
-    name: "Symphony CobaGPT Bot",
-    description: `
-      A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
-      This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
-      This bot is a result of Commerzbank's initiative towards automation using AI.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
+      BlogDatabaseKeys.CommerzbankMigrationToBDK,
     ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: "Symphony Webhooks Bot",
-    description: `
-      A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
-      This bot is used to send messages to a chatroom from an external source.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyPollBot]: {
-    name: "Symphony Poll Bot",
-    description: `
-      A Symphony bot for creating polls and surveys for gathering feedback.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyRssBot]: {
-    name: "Symphony RSS Bot",
-    description: `
-      A Symphony bot which fetches RSS feeds from various sources and posts them to a Symphony chatroom.
-      Users can subscribe to specific RSS feeds and receive updates in real-time.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SymphonyBlogBot]: {
-    name: "Symphony Blog Bot",
-    description: `
-      A Symphony bot which makes announcements in chatrooms and direct messages using markdown formatting.
-      Users can create, edit, and delete announcements using simple commands.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
-    name: "Symphony Business Highlights Bot",
-    description: `
-      A Symphony bot which compiles weekly business reports from various users
-      and generates a summary of the business highlights for the week.
-      Uses Azure Active Directory for managing permissions and access control.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Grafana,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
-    name: "Symphony Interactive Bot Example",
-    description: `
-      A Symphony bot for learning how to create an interactive bot in Symphony.
-      This bot is used to demonstrate how to create an interactive bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
-    name: "Symphony Headless Bot Example",
-    description: `
-      A Symphony bot for learning how to create a Headless Bot in Symphony.
-      This bot is used to demonstrate how to create a headless bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: "Flask Forum Backend",
     description: `
-      This is a custom backend for the first iteration of the discussion platform. 
-      This was created to learn how to create a custom backend using Python and Flask.
+      Powers user authentication, community moderation, and threaded discussions for an online forum platform.
+      Exposes structured endpoints for handling community memberships, post ranking, voting, and comment hierarchies.
       `,
     repositoryURL: "https://github.com/mbeps/Forum-Discussion-Flask-Backend",
     skills: [
@@ -1506,111 +781,14 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
   },
-  [ProjectDatabaseKeys.FlaskBackendDemo]: {
-    name: "Flask Backend Demo",
-    description: `
-      A simple Flask app to learn how to create a RESTful API. 
-      This was a foundational project to learn how to create a back-end using Flask.
-      This was helpful when creating the back-end for the discussion platform.
-      `,
-    repositoryURL: "https://github.com/mbeps/python-flask-demo",
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.SqlAlchemy,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.SqLite,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.UserAuthentication]: {
-    name: "User Authentication",
-    description: `
-      A list of projects implementing and experimenting with user authentication using various stacks.
-      `,
-    repositoryURL: "https://github.com/stars/mbeps/lists/web-authentication",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.Auth0,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.PostgreSql,
-
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Django,
-      SkillDatabaseKeys.Flask,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.SpringDataJPATemplate]: {
-    name: "Spring Data JPA Template",
-    description: `
-      A template project for using Spring Data JPA with PostgreSQL. 
-      This was created for documenting how use SQL databases for our Spring Boot projects.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL: "https://github.com/mbeps/springboot-sql-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataJpa,
-    ],
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SpringDataMongoTemplate]: {
-    name: "Spring Data MongoDB Template",
-    description: `
-      A template project for using Spring Data MongoDB.
-      This was created for documenting how use MongoDB databases for our Spring Boot projects.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL:
-      "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataJpa,
-    ],
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SpringBootLdapTemplate]: {
-    name: "Spring Data LDAP Template",
-    description: `
-      A template project for using Spring Data LDAP.
-      This was created for learning how to use LDAP for our Spring Boot projects specifically for role-based access control.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    type: ProjectTypeEnum.Professional,
-    repositoryURL: "https://github.com/mbeps/springboot-ad-ldap-template",
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataLdap,
-    ],
-    archived: true,
-  },
 
   //^ Libraries
   [ProjectDatabaseKeys.BaseRestController]: {
     name: "REST Template Config",
     description: `
-      A library for Spring Boot allowing for greater configuration of proxies and SSL settings. 
-      `,
+      A reusable networking configuration library that simplifies outbound HTTP client setup in enterprise applications.
+      Streamlines corporate proxy definitions, custom security certificates, and authentication credentials.
+    `,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1621,21 +799,13 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Libraries,
     type: ProjectTypeEnum.Professional,
     archived: true,
-    relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyTranslateBot,
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyRssBot,
-      ProjectDatabaseKeys.CommerzbankRates,
-
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
     name: "Markdown to MessageML Converter",
     description: `
-      A library for converting Markdown to Symphony's MessageML format.
-      This was created because there was no existing library that could convert Markdown to MessageML.
-      Especially useful for rendering responses from LLMs as they return messages in Markdown format.
+      Parses standard formatted text documents and converts them into compliance-ready enterprise chat markup.
+      Ensures rich formatting such as code blocks, lists, and tables render accurately across messaging clients.
       `,
     skills: [
       SkillDatabaseKeys.Java,
@@ -1646,16 +816,13 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Libraries,
     type: ProjectTypeEnum.Professional,
     archived: true,
-    relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyBlogBot,
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
     name: "LDAP Role-Based Access Control Library",
     description: `
-      A library for Spring Boot controlling user access across various Spring Boot applications using LDAP.
+      Provides declarative authorization utilities for enforcing user permissions derived from corporate directory groups.
+      Eliminates repetitive security boilerplate by intercepting requests and validating user privileges against defined access policies.
       `,
     skills: [
       SkillDatabaseKeys.Java,
@@ -1669,106 +836,18 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     archived: true,
     relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
       ProjectDatabaseKeys.CommerzbankRates,
-      ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
-      ProjectDatabaseKeys.SpringBootLdapTemplate,
-
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
-  },
-
-  //^ Programming Fundamentals
-  [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
-    name: "Calculator",
-    description: `
-      This was a second year assignment focused on software engineering methodologies. 
-      The project emphasized the importance of proper version control procedures, 
-      test-driven development, documentation, and code quality assurance.`,
-    repositoryURL: "https://github.com/mbeps/Calculator-Assignment",
-    skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.JUnit],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-  },
-  [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
-    name: "Java Fundamentals Assignments",
-    description: `
-      First-year Java assignments focused on learning the basics of Java and Object-Oriented Programming (OOP). 
-      These projects covered core concepts like classes, inheritance, and data handling. 
-      They provided a solid foundation in Java programming and practical experience with fundamental OOP principles.
-      `,
-    repositoryURL:
-      "https://github.com/stars/mbeps/lists/java-fundamentals-assignments",
-    skills: [SkillDatabaseKeys.Java],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
-      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
-    ],
-  },
-  [ProjectDatabaseKeys.DatabasesMiniProject]: {
-    name: "Database Mini Project",
-    description: "Learning to interact with a database using Java.",
-    repositoryURL: "https://github.com/mbeps/DatabasesMiniProject",
-    skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.PostgreSql],
-    category: ProjectCategoriesEnum.ProgrammingFundamentals,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-  },
-
-  //^ Algorithms and Data Structures
-  [ProjectDatabaseKeys.Leetcode]: {
-    name: "Leetcode Solutions",
-    description: `
-      A collection of Leetcode solutions in Python. 
-      This is used to practice algorithms and data structures.
-      They are also used to practice unit testing.
-      CI/CD is also used to run the tests when merging to the main branch.
-      `,
-    repositoryURL: "https://github.com/stars/mbeps/lists/leetcode",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.GitHubActions,
-    ],
-    category: ProjectCategoriesEnum.Algorithms,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
-    name: "Searching & Sorting Algorithms",
-    description: `
-      Jupyter Notebook containing various searching and sorting algorithms.
-      Each algorithms is explained. 
-      All the algorithms are also compared to each other. 
-    `,
-    category: ProjectCategoriesEnum.Algorithms,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.NumPy,
-    ],
-    repositoryURL: "https://github.com/mbeps/algorithms",
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
-      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
-      CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
-    ],
-    type: ProjectTypeEnum.Academic,
   },
 
   //^ Other Projects
   [ProjectDatabaseKeys.CommerzbankTrumpNotification]: {
     name: "Commerzbank Trump Notification",
     description: `
-      An automated services which sends low-latency notifications about Donald Trump's posts from Truth Social to traders in Commerzbank's.
+      Delivers low-latency alerts from social media feeds directly to trading desks during market hours.
+      Helps financial traders react promptly to breaking political statements and news announcements.
     `,
     skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.FastApi],
     category: ProjectCategoriesEnum.Other,
@@ -1778,9 +857,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
     name: "All-in-One Clipboard Extension",
     description: `
-      A Gnome extension that adds advanced clipboard management features to the Gnome desktop environment.
-      Inspired by Windows 11's feature, this extension allows users to manage clipboard history, emojis, kaomojis, GIFs, and symbols.
-          `,
+      Enhances desktop clipboard functionality with searchable history and multi-format text snippets.
+      Users can quickly paste past copied items, emojis, symbols, and animated media from a unified popup menu.
+    `,
     repositoryURL: "https://github.com/NiffirgkcaJ/all-in-one-clipboard",
     skills: [SkillDatabaseKeys.JavaScript],
     category: ProjectCategoriesEnum.Other,
@@ -1791,7 +870,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
     name: "Quick Settings Tweak Extension",
     description: `
-      A Gnome extension that allows users to customize the quick settings menu in the Gnome desktop environment.
+      Allows users to customize and reorder system menu toggles in their desktop environment.
+      Provides granular control over menu visibility, button placement, and notification tray layouts.
       `,
     repositoryURL: "https://github.com/qwreey/quick-settings-tweaks",
     skills: [SkillDatabaseKeys.JavaScript],
@@ -1799,82 +879,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [RoleDatabaseKeys.OpenSourceContributor],
     type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.OsmosGame]: {
-    name: "Osmos Game",
-    description: `
-          A simple game built with SimpleGUI for a first-year university project. 
-          We manually implemented physics using vector theory and physics concepts, relying solely on documentation due to the lack of tutorials.
-          `,
-    repositoryURL: "https://github.com/mbeps/Osmos_Game",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.SimpleGui,
-      SkillDatabaseKeys.PyTest,
-    ],
-    category: ProjectCategoriesEnum.Other,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OsmosGame).COVER,
-  },
-  [ProjectDatabaseKeys.AutomatedSetup]: {
-    name: "Automated Setup",
-    description: `
-      A shell script which automates the setup of a new Linux machine.
-      This is specifically for my Fedora install.
-      `,
-    skills: [SkillDatabaseKeys.ShellScript],
-    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.MdmAutomations]: {
-    name: "MDM Automations",
-    description: `
-      A script which compiles and processes business information from various sources into a single spreadsheet.
-      This is then sent to HR for allocating cost centers to employees.
-      This cut down time from a 4 hours of work to 1 minute.
-        `,
-    skills: [SkillDatabaseKeys.Python],
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.FinanceAutomations]: {
-    name: "Finance Automations",
-    description: `
-      A script which compiles and processes information about various businesses from Companies House and FCA. 
-      This cut down time from a full day to less than 5 minutes.
-        `,
-    skills: [SkillDatabaseKeys.Python],
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.AutomatedManifestPush]: {
-    name: "Automated Manifest Push",
-    description: `
-      A script which escapes and compresses JSON files storing commands for Symphony bots and pushes them to remote servers.
-        `,
-    skills: [SkillDatabaseKeys.Python],
-    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.JwtHelper]: {
-    name: "JWT Helper",
-    description: `
-      A tool which generates JWTs for users (specifically bots) from private keys. 
-      This is then used for authenticating with Symphony's API and pushing manifests files to servers.
-        `,
-    skills: [SkillDatabaseKeys.Java],
-    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-    type: ProjectTypeEnum.Professional,
   },
 };
 
