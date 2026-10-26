@@ -26,10 +26,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CarDealership]: {
     name: "Car Dealership",
     description: `
-      Car dealership website for a client.
-      Users can browse, search, and filter cars.
-      Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
-      AI clients can interact with app via MCP.
+      Enables customers to browse vehicle inventory, filter by specifications, and schedule test drives.
+      Dealership staff and automated assistants manage listings, reservations, and business operations through a central dashboard.
       `,
     repositoryURL: "https://github.com/mbeps/car-dealership",
     deploymentURL: "https://car-dealership.maruf-bepary.com/",
@@ -59,9 +57,8 @@ const projectMap: Database<ProjectInterface> = {
     name: "Forum Discussions",
     archived: true,
     description: `
-      A forum-style social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them.
-      Tested on CRUD and software engineering principles.
+      A community platform where users create dedicated groups, publish posts, and participate in threaded discussions.
+      Features include voting, media sharing, bookmarking, and personalized content feeds.
       `,
     repositoryURL: "https://github.com/mbeps/next_discussion_platform",
     deploymentURL: "https://forum-discussions.maruf-bepary.com/",
@@ -91,8 +88,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankAppStatus]: {
     name: "Commerzbank App Status",
     description: `
-      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
-      Users are able to create personal subscriptions groups with other members. 
+      Monitors the operational health and uptime of enterprise services across the organization.
+      Users track critical systems through personal subscriptions and team groups, with direct incident reporting and status announcements.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -127,8 +124,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankRates]: {
     name: "Commerzbank Rates",
     description: `
-      A web application that provides rates to business users and allows exporting and viewing historical data.
-      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
+      Delivers daily risk-free and forward-looking interest rates sourced from financial market data providers.
+      Business users can analyze historical trends, export spreadsheet reports, and configure automated threshold alerts.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -168,8 +165,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankDataNotification]: {
     name: "Commerzbank Data Notification",
     description: `
-    Analyses Data Notification against DACS reports to identify impacted users and applications. 
-    It verifies Reuters Instrument Code usage, tracks remediation actions, and exports results to Excel.`,
+      Cross-references market data vendor notices against entitlement reports to detect impacted applications and users.
+      Verifies instrument code usage, tracks remediation workflows, and generates compliance audit reports.
+    `,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -204,7 +202,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
     name: "Commerzbank Phoenix Finance Enrichment",
     description: `
-        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
+      Aggregates and enriches corporate financial records across multiple data providers.
+      Analysts can query companies, process bulk entity spreadsheets, and export consolidated records.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -240,8 +239,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.MusicStreaming]: {
     name: "Music Streaming",
     description: `
-      Music steaming platform. 
-      Users can upload songs, search and listen to music, as well as like the songs they enjoy.
+      An audio streaming platform for discovering artists, exploring albums, and playing tracks.
+      Listeners can build custom playlists with drag-and-drop reordering and curate their favorite songs.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
     deploymentURL: "https://music.maruf-bepary.com/",
@@ -268,9 +267,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.RichTextNotes]: {
     name: "Rich-Text Notes",
     description: `
-      A note-taking app where users can sign up, log in, and reset passwords easily. 
-      It supports rich text formatting, image additions, and publishing notes publicly. 
-      Users alse organize notes into nested notebooks.`,
+      A workspace for creating formatted documents with embedded media and organizing them into hierarchical notebooks.
+      Notes can be published to the web or managed through automated AI assistant integrations.
+    `,
     repositoryURL: "https://github.com/mbeps/joker-notes",
     deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
@@ -299,8 +298,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.RealTimeMessaging]: {
     name: "Real-Time Messaging",
     description: `
-      A real-time messaging platform.
-      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
+      Enables instant communication through private one-on-one chats and collaborative group conversations.
+      Users can share images inline, monitor online presence, and customize their profiles.
       `,
     repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
     deploymentURL: "https://messaging.maruf-bepary.com/",
@@ -333,8 +332,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.Noodle]: {
     name: "Noodle",
     description: `
-      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
-      This app helps students manage tasks, assignments, exams, and store notes and resources.
+      An open-source study platform designed to streamline academic organization for students.
+      Centralizes course materials, tracks assignments and exam schedules, and organizes study notes.
       `,
     repositoryURL: "https://github.com/ixahmedxi/noodle",
     deploymentURL: "https://noodle.run/",
@@ -363,9 +362,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
     description: `
-    Specifically looked into and improved hybrid-reasoning models using LoRA and novel hybrid-training technique.
-    Regular supervised fine-tuning on reasoning models causes them to forget their reasoning capabilities.
-    This is solved using my novel hybrid training technique.`,
+      Investigates and prevents the loss of reasoning capabilities in language models during specialized fine-tuning.
+      Introduces a hybrid training approach that preserves structured reasoning while adapting to domain-specific tasks.
+    `,
     repositoryURL:
       "https://github.com/stars/mbeps/lists/cultural-alignment-in-llms",
     skills: [
@@ -394,8 +393,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.ExcelSpreadsheetMCP]: {
     name: "Excel Spreadsheet MCP Server",
     description: `
-      An MCP server which allows AI agents to connect and interact with Excel spreadsheets.
-      This allows the AI agents to perform various tasks such as reading and writing data, performing calculations, and more.
+      Connects AI assistants directly to spreadsheets for automated data manipulation, styling, and financial modeling.
+      Enables autonomous agents to execute complex formulas, generate multi-series charts, and run statistical analysis.
       `,
     repositoryURL: "https://github.com/mbeps/excel-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -413,8 +412,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LinuxGnomeMcp]: {
     name: "Linux GNOME MCP Server",
     description: `
-      An MCP server which allows AI agents to connect and interact with the GNOME desktop environment on Linux.
-      This allows the AI agents to perform various tasks such as opening applications, changing themes, and more.
+      Enables AI assistants to interact with and control the desktop environment on Linux systems.
+      Agents can launch applications, capture screenshots, manage windows, adjust system settings, and inspect hardware performance metrics.
       `,
     repositoryURL: "https://github.com/mbeps/linux-gnome-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -430,8 +429,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat]: {
     name: "Llama.cpp Provider for GitHub Copilot Chat",
     description: `
-    Allows using local Llama.cpp models within GitHub Copilot for VS Code. 
-    Saves costs and provides more control over the models used in Copilot Chat, enabling private and customizable AI assistance for developers.
+      Integrates self-hosted language models into the code editor's chat interface with streaming and tool support.
+      Provides developers with complete data privacy, reduced inference costs, and flexible model selection.
     `,
     repositoryURL: "https://github.com/mbeps/llama-vscode-chat",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -452,7 +451,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
     description: `
-      A compact implementation of a Vision Transformer (ViT). The code is written for learning and experiments.
+      A standalone implementation of transformer architectures adapted for image classification from first principles.
+      Processes image patch embeddings through multi-head self-attention mechanisms to perform visual recognition.
       `,
     repositoryURL: "https://github.com/mbeps/vision-transformer",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -475,8 +475,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
     name: "Commerzbank AI Proxy",
     description: `
-      A proxy service that converts the internal GenAI API to OpenAI compatible API format with streaming and tool calls. 
-      This allows internal API to be used with industry standard AI tools and clients.
+      Translates proprietary internal generative AI endpoints into standardized streaming and tool-calling interfaces.
+      Enables enterprise development teams to connect standard developer tooling and assistants to private corporate models.
       `,
     skills: [
       SkillDatabaseKeys.Python,
@@ -494,9 +494,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AiChatClient]: {
     name: "AI Chat Client",
     description: `
-      A chat client that allows users to have conversations with AI models.
-      The client supports various AI models, access to built-in tools, external MCPs, knowlegebases, custom workflows, projects, prompts, etc.
-      It is a very feature-rich client.
+      A conversational workspace featuring branching message trees, sidecar visual artifacts, and multi-model support.
+      Integrates document retrieval for contextual search, slash-command prompt shortcuts, and extensible external tools.
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/ai-client",
@@ -528,9 +527,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AiWorkflowAutomations]: {
     name: "AI Workflow Automations",
     description: `
-    Runs AI driven automations based on triggers. 
-    These triggers can be automatic (events) or manual.
-    Allows regular users to easily create and run AI driven automations without any technical knowledge, making AI more accessible and useful for everyone.
+      A visual node editor for designing and running multi-step automation pipelines triggered by schedules or webhooks.
+      Connects language models with third-party messaging services and custom actions in durable execution graphs.
     `,
     repositoryURL: "https://github.com/mbeps/ai-workflow-automations",
     deploymentURL: "https://ai-workflow-automations.maruf-bepary.com",
@@ -564,8 +562,8 @@ const projectMap: Database<ProjectInterface> = {
     name: "AI Generations",
     archived: true,
     description: `
-      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
-      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+      A multi-modal content creation platform providing conversation, code synthesis, and image generation.
+      Users can customize prompt parameters and manage their usage through tier-based subscriptions.
     `,
     repositoryURL: "https://github.com/mbeps/magician-ai",
     skills: [
@@ -597,9 +595,9 @@ const projectMap: Database<ProjectInterface> = {
     name: "AI Quizzes",
     archived: true,
     description: `
-      A platform for dynamic quiz generation. 
-      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
-      With immediate feedback and score tracking, users enhance their understanding.`,
+      Generates customized quizzes across diverse topics in multiple-choice and fill-in-the-blank formats.
+      Delivers immediate answer feedback, scoring metrics, and historical performance tracking.
+    `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -628,8 +626,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AuthenticationMicroService]: {
     name: "Authentication Microservice",
     description: `
-      A microservice providing OAuth authentication and authorisation to various applications using Microsoft Entra.
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      Centralizes identity verification and role-based access control across internal enterprise applications.
+      Manages token lifecycles, session validation, and user profile permissions to reduce authentication redundancy.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -661,9 +659,8 @@ const projectMap: Database<ProjectInterface> = {
     name: "Entra Mock Service",
     archived: true,
     description: `
-      A mock service for simulating Entra authentication flows.
-      Allows creation of mock users with various roles and permissions to test different scenarios. 
-      This is used during development as Entra does not work in local environments. Mock users with various roles and permissions can be created to test different scenarios.
+      Simulates enterprise identity provider authentication flows for local testing and development environments.
+      Allows developers to configure synthetic user accounts with custom roles and permissions to test authorization scenarios offline.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -686,8 +683,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.EmailMicroService]: {
     name: "Email Microservice",
     description: `
-      A microservice providing functionality to send emails for various applications and services. 
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      A centralized service for dispatching transactional emails and system notifications across enterprise applications.
+      Consolidates templating, delivery tracking, and connection pooling into a shared messaging utility.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -707,8 +704,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LdapPermissionsMicroService]: {
     name: "LDAP Permissions Microservice",
     description: `
-      A microservice providing functionality of view permissions for users based on on-prem LDAP roles. 
-      Minimises on duplications allowing for faster development and simpler infrastructure.
+      Resolves and caches user permissions and organizational directory roles for downstream internal services.
+      Streamlines access evaluation across applications by providing a unified permission querying endpoint.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -729,8 +726,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SymphonyBots]: {
     name: "Symphony Bots",
     description: `
-      A suite of enterprise Symphony chatbots built to automate communication and operational workflows.
-      Key features include AI text generation with Azure OpenAI, live message translation, webhooks, interactive polls, and automated report aggregation.
+      A suite of enterprise chatbots designed to automate communication and operational workflows for financial trading desks.
+      Features include live message translation, interactive polling, automated report distribution, and conversational AI assistance.
     `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -763,8 +760,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: "Flask Forum Backend",
     description: `
-      This is a custom backend for the first iteration of the discussion platform. 
-      This was created to learn how to create a custom backend using Python and Flask.
+      Powers user authentication, community moderation, and threaded discussions for an online forum platform.
+      Exposes structured endpoints for handling community memberships, post ranking, voting, and comment hierarchies.
       `,
     repositoryURL: "https://github.com/mbeps/Forum-Discussion-Flask-Backend",
     skills: [
@@ -789,8 +786,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.BaseRestController]: {
     name: "REST Template Config",
     description: `
-      A library for Spring Boot allowing for greater configuration of proxies and SSL settings. 
-      `,
+      A reusable networking configuration library that simplifies outbound HTTP client setup in enterprise applications.
+      Streamlines corporate proxy definitions, custom security certificates, and authentication credentials.
+    `,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -806,9 +804,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
     name: "Markdown to MessageML Converter",
     description: `
-      A library for converting Markdown to Symphony's MessageML format.
-      This was created because there was no existing library that could convert Markdown to MessageML.
-      Especially useful for rendering responses from LLMs as they return messages in Markdown format.
+      Parses standard formatted text documents and converts them into compliance-ready enterprise chat markup.
+      Ensures rich formatting such as code blocks, lists, and tables render accurately across messaging clients.
       `,
     skills: [
       SkillDatabaseKeys.Java,
@@ -824,7 +821,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
     name: "LDAP Role-Based Access Control Library",
     description: `
-      A library for Spring Boot controlling user access across various Spring Boot applications using LDAP.
+      Provides declarative authorization utilities for enforcing user permissions derived from corporate directory groups.
+      Eliminates repetitive security boilerplate by intercepting requests and validating user privileges against defined access policies.
       `,
     skills: [
       SkillDatabaseKeys.Java,
@@ -848,7 +846,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankTrumpNotification]: {
     name: "Commerzbank Trump Notification",
     description: `
-      An automated services which sends low-latency notifications about Donald Trump's posts from Truth Social to traders in Commerzbank's.
+      Delivers low-latency alerts from social media feeds directly to trading desks during market hours.
+      Helps financial traders react promptly to breaking political statements and news announcements.
     `,
     skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.FastApi],
     category: ProjectCategoriesEnum.Other,
@@ -858,9 +857,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
     name: "All-in-One Clipboard Extension",
     description: `
-      A Gnome extension that adds advanced clipboard management features to the Gnome desktop environment.
-      Inspired by Windows 11's feature, this extension allows users to manage clipboard history, emojis, kaomojis, GIFs, and symbols.
-          `,
+      Enhances desktop clipboard functionality with searchable history and multi-format text snippets.
+      Users can quickly paste past copied items, emojis, symbols, and animated media from a unified popup menu.
+    `,
     repositoryURL: "https://github.com/NiffirgkcaJ/all-in-one-clipboard",
     skills: [SkillDatabaseKeys.JavaScript],
     category: ProjectCategoriesEnum.Other,
@@ -871,7 +870,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
     name: "Quick Settings Tweak Extension",
     description: `
-      A Gnome extension that allows users to customize the quick settings menu in the Gnome desktop environment.
+      Allows users to customize and reorder system menu toggles in their desktop environment.
+      Provides granular control over menu visibility, button placement, and notification tray layouts.
       `,
     repositoryURL: "https://github.com/qwreey/quick-settings-tweaks",
     skills: [SkillDatabaseKeys.JavaScript],

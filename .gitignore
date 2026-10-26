@@ -40,11 +40,8 @@ docs/**
 graphify-out/**
 
 # ai
-GEMINI.md
-CLAUDE.md
-AGENT.md
-./github/copilot.instructions.md
-./github/instructions/**
-subagents/**
+.agents/**
+AGENTS.md
 .subagents/**
 mcp.json
+todo.md
