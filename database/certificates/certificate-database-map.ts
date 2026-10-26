@@ -1,7 +1,6 @@
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
-import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";

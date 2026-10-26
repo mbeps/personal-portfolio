@@ -1,17 +1,19 @@
 # ---- Build Stage ----
-FROM node:22-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN yarn install
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY . .
-RUN yarn build
+RUN pnpm build
 
 # ---- Release Stage ----
-FROM node:22-alpine AS release
+FROM node:24-alpine AS release
 WORKDIR /app
-COPY --from=builder /app/package*.json ./
-RUN yarn install
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --prod --frozen-lockfile
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]

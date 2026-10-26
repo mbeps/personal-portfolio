@@ -12,10 +12,10 @@ Below is a line-by-line explanation of each part of the `Dockerfile`.
 
 ```Dockerfile
 # ---- Build Stage ----
-FROM node:18.16.0-alpine AS builder
+FROM node:24-alpine AS builder
 ```
 
-This is the first stage of the multi-stage build. It uses the `node:18.16.0-alpine` Docker image as the base image. This image includes Node.js based on the 18.16.0 version and uses Alpine, a lightweight Docker image. The stage is named `builder`.
+This is the first stage of the multi-stage build. It uses the `node:24-alpine` Docker image as the base image. This image includes Node.js based on version 24 and uses Alpine, a lightweight Docker image. The stage is named `builder`.
 
 ```Dockerfile
 WORKDIR /app
@@ -24,16 +24,17 @@ WORKDIR /app
 Set the working directory to `/app`. All the instructions that follow in the `Dockerfile` will be run from this directory.
 
 ```Dockerfile
-COPY package*.json ./
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
 ```
 
-Copy the `package.json` and `package-lock.json` (if available) from your host to your image filesystem.
+Enables Corepack to use the project's configured `pnpm` package manager, and copies `package.json` and `pnpm-lock.yaml` from your host to your image filesystem.
 
 ```Dockerfile
-RUN npm install
+RUN pnpm install --frozen-lockfile
 ```
 
-Run the `npm install` command inside your image filesystem which installs the dependencies described in `package.json`.
+Run the `pnpm install --frozen-lockfile` command inside your image filesystem which deterministically installs dependencies from the lockfile.
 
 ```Dockerfile
 COPY . .
@@ -42,17 +43,17 @@ COPY . .
 Copy everything from the current directory in your host to the `WORKDIR` in your image filesystem.
 
 ```Dockerfile
-RUN npm run build
+RUN pnpm build
 ```
 
 This step will create an optimized production build of your Next.js application.
 
 ```Dockerfile
 # ---- Release Stage ----
-FROM node:18.16.0-alpine AS release
+FROM node:24-alpine AS release
 ```
 
-This begins the second stage of the multi-stage build, also using `node:18.16.0-alpine` as the base image, named as `release`.
+This begins the second stage of the multi-stage build, also using `node:24-alpine` as the base image, named as `release`.
 
 ```Dockerfile
 WORKDIR /app
@@ -61,34 +62,35 @@ WORKDIR /app
 Sets the working directory to `/app`.
 
 ```Dockerfile
-COPY --from=builder /app/package*.json ./
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
 ```
 
-This copies the `package.json` and `package-lock.json` (if available) from the `builder` stage to the current stage.
+Enables Corepack and copies `package.json` and `pnpm-lock.yaml` from the host.
 
 ```Dockerfile
-RUN npm install --only=production
+RUN pnpm install --prod --frozen-lockfile
 ```
 
-This will install only the dependencies needed for running the application, and not the devDependencies, thus creating a leaner image.
+This will install only production dependencies needed for running the application, and not devDependencies, creating a leaner image.
 
 ```Dockerfile
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 ```
 
-These lines are copying the built Next.js app files and the public files from the `builder` stage into the `release` stage.
+These lines copy the built Next.js application and public assets from the `builder` stage into the `release` stage.
 
 ```Dockerfile
 EXPOSE 3000
 ```
 
-This informs Docker that the container listens on the specified network ports at runtime. In this case, it's port 3000.
+This informs Docker that the container listens on port 3000 at runtime.
 
 ```Dockerfile
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]
 ```
 
-Provides defaults for executing a container, which includes the specifications of what executable to run when the container starts.
+Provides the entrypoint command to run the production server.
 
-In conclusion, this Dockerfile leverages the multi-stage build feature to create a lean, production-ready Docker image of your Next.js application. You start with a larger image containing everything needed to build your application, and then copy just the built application and its runtime dependencies into a smaller, final image.
+In conclusion, this Dockerfile leverages the multi-stage build feature with `pnpm` to create a lean, production-ready Docker image of your Next.js application.
