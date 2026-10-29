@@ -62,3 +62,12 @@
 - Rename artists.
 - Delete artists.
 - Manage ownership of all created content.
+
+## **Admin Management**
+- Dedicated admin dashboard with a system overview.
+- View platform-wide statistics for total songs, albums, artists, and custom playlists.
+- Monitor global storage capacity and current usage .
+- Tabbed interface to manage Songs, Albums, Artists, Playlists, and Storage & Quotas.
+- Filter platform items by title or artist with dynamic count display.
+- Data table listing content details including title, album, artist, and upload date.
+- Administrative delete actions to remove items directly from the system.
