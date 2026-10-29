@@ -55,7 +55,6 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: "Forum Discussions",
-    archived: true,
     description: `
       A community platform where users create dedicated groups, publish posts, and participate in threaded discussions.
       Features include voting, media sharing, bookmarking, and personalized content feeds.
@@ -165,6 +164,7 @@ const projectMap: Database<ProjectInterface> = {
       Cross-references market data vendor notices against entitlement reports to detect impacted applications and users.
       Verifies instrument code usage, tracks remediation workflows, and generates compliance audit reports.
     `,
+    archived: true,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -202,6 +202,7 @@ const projectMap: Database<ProjectInterface> = {
       Aggregates and enriches corporate financial records across multiple data providers.
       Analysts can query companies, process bulk entity spreadsheets, and export consolidated records.
     `,
+    archived: true,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -239,6 +240,7 @@ const projectMap: Database<ProjectInterface> = {
       An audio streaming platform for discovering artists, exploring albums, and playing tracks.
       Listeners can build custom playlists with drag-and-drop reordering and curate their favorite songs.
       `,
+    archived: true,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
     deploymentURL: "https://music.maruf-bepary.com/",
     skills: [
@@ -265,8 +267,9 @@ const projectMap: Database<ProjectInterface> = {
     name: "Rich-Text Notes",
     description: `
       A workspace for creating formatted documents with embedded media and organizing them into hierarchical notebooks.
-      Notes can be published to the web or managed through automated AI assistant integrations.
+      Notes can be published to the web or managed through AI assistants via MCP.
     `,
+    archived: true,
     repositoryURL: "https://github.com/mbeps/joker-notes",
     deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
@@ -412,6 +415,7 @@ const projectMap: Database<ProjectInterface> = {
       Enables AI assistants to interact with and control the desktop environment on Linux systems.
       Agents can launch applications, capture screenshots, manage windows, adjust system settings, and inspect hardware performance metrics.
       `,
+    archived: true,
     repositoryURL: "https://github.com/mbeps/linux-gnome-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
@@ -424,7 +428,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.LinuxGnomeMcp).COVER,
   },
   [ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat]: {
-    name: "Llama.cpp Provider for GitHub Copilot Chat",
+    name: "Llama.cpp Provider for GitHub Copilot",
     description: `
       Integrates self-hosted language models into the code editor's chat interface with streaming and tool support.
       Provides developers with complete data privacy, reduced inference costs, and flexible model selection.
@@ -463,7 +467,6 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
-    archived: true,
   },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
@@ -682,6 +685,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.EmailMicroService]: {
     name: "Email Microservice",
+    archived: true,
     description: `
       A centralized service for dispatching transactional emails and system notifications across enterprise applications.
       Consolidates templating, delivery tracking, and connection pooling into a shared messaging utility.
@@ -707,6 +711,7 @@ const projectMap: Database<ProjectInterface> = {
       Resolves and caches user permissions and organizational directory roles for downstream internal services.
       Streamlines access evaluation across applications by providing a unified permission querying endpoint.
       `,
+    archived: true,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
