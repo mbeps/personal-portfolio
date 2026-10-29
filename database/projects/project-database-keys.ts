@@ -30,7 +30,6 @@ enum ProjectDatabaseKeys {
   LdapPermissionsMicroService = "ldap-permissions-microservice",
   SymphonyBots = "symphony-bots",
   SpringBootLdapRoleBasedAccessControlLibrary = "spring-boot-ldap-role-based-access-control-library",
-  FlaskForumBackend = "flask-forum-backend",
   BaseRestController = "base-rest-controller",
 
   //^ Artificial Intelligence Projects

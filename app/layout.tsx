@@ -9,7 +9,6 @@ import { Providers } from "@/providers/providers";
 import "./globals.css";
 import Scroll from "@/components/ui/scroll";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
-import { VercelTrackers } from "@/providers/vercel-trackers";
 import "katex/dist/katex.min.css";
 
 import { Inter } from "next/font/google";
@@ -76,7 +75,6 @@ export default function RootLayoutWithProviders({
             <Footer />
           </main>
         </Providers>
-        <VercelTrackers />
       </body>
     </html>
   );

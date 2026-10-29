@@ -77,7 +77,6 @@ const courseMap: Database<CourseInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.ForumDiscussions,
       ProjectDatabaseKeys.Noodle,
-      ProjectDatabaseKeys.FlaskForumBackend,
     ],
   },
 };

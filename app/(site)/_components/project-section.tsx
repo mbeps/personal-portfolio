@@ -21,9 +21,7 @@ const ProjectsSection = () => {
     ProjectDatabaseKeys.AiChatClient,
     ProjectDatabaseKeys.CarDealership,
     ProjectDatabaseKeys.CommerzbankAppStatus,
-    ProjectDatabaseKeys.CommerzbankRates,
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-    ProjectDatabaseKeys.ExcelSpreadsheetMCP,
   ];
 
   return (

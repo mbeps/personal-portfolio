@@ -874,7 +874,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NextJs,
     ],
   },
-  [SkillDatabaseKeys.TRcp]: {
+  [SkillDatabaseKeys.TRpc]: {
     name: "tRPC",
     isMainSkill: true,
     category: SkillCategoriesEnum.BackEndWebDevelopment,
