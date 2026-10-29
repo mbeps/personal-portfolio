@@ -79,10 +79,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_FinalYearProject,
-      ProjectDatabaseKeys.FlaskForumBackend,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_FinalYearProject],
     type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.CommerzbankAppStatus]: {
@@ -756,30 +753,6 @@ const projectMap: Database<ProjectInterface> = {
       BlogDatabaseKeys.CommerzbankMigrationToBDK,
     ],
     type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.FlaskForumBackend]: {
-    name: "Flask Forum Backend",
-    description: `
-      Powers user authentication, community moderation, and threaded discussions for an online forum platform.
-      Exposes structured endpoints for handling community memberships, post ranking, voting, and comment hierarchies.
-      `,
-    repositoryURL: "https://github.com/mbeps/Forum-Discussion-Flask-Backend",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.MySql,
-      SkillDatabaseKeys.SqlAlchemy,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Docker,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_FinalYearProject,
-      ProjectDatabaseKeys.ForumDiscussions,
-    ],
-    type: ProjectTypeEnum.Academic,
-    archived: true,
   },
 
   //^ Libraries

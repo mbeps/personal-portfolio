@@ -504,10 +504,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing advanced UI features such as push notifications",
       "Exploring the use of emerging platforms such as blockchain in web development",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.ForumDiscussions,
-      ProjectDatabaseKeys.FlaskForumBackend,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.ForumDiscussions],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_MachineLearning]: {
