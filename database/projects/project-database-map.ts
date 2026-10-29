@@ -834,6 +834,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Professional,
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
   },
   [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
     name: "All-in-One Clipboard Extension",
