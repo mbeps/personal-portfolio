@@ -27,8 +27,8 @@ const projectMap: Database<ProjectInterface> = {
     name: "Car Dealership",
     description: `
       Enables customers to browse vehicle inventory, filter by specifications, and schedule test drives.
-      Dealership staff and automated assistants manage listings, reservations, and business operations through a central dashboard.
-      `,
+      Owners manage listings, reservations, and business operations through a dashboard.
+      Includes an MCP server allowing AI agents to interact with the app.`,
     repositoryURL: "https://github.com/mbeps/car-dealership",
     deploymentURL: "https://car-dealership.maruf-bepary.com/",
     skills: [
