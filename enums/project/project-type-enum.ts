@@ -6,6 +6,7 @@ enum ProjectTypeEnum {
   Personal = "Personal",
   Academic = "Academic",
   Professional = "Professional",
+  Freelance = "Freelance",
 }
 
 export default ProjectTypeEnum;

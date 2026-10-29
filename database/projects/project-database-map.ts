@@ -51,7 +51,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
-    type: ProjectTypeEnum.Personal,
+    type: ProjectTypeEnum.Freelance,
   },
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: "Forum Discussions",
