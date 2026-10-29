@@ -445,6 +445,26 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
     ).COVER,
   },
+  [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
+    name: "Commerzbank AI Proxy",
+    description: `
+      Translates proprietary internal generative AI endpoints into standardized streaming and tool-calling interfaces.
+      Enables enterprise development teams to connect standard developer tooling and assistants to private corporate models.
+      `,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.FastApi,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy,
+    ).COVER,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
+    archived: true,
+  },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
     description: `
@@ -467,23 +487,6 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.VisionTransformerFromScratch,
     ).COVER,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
-    name: "Commerzbank AI Proxy",
-    description: `
-      Translates proprietary internal generative AI endpoints into standardized streaming and tool-calling interfaces.
-      Enables enterprise development teams to connect standard developer tooling and assistants to private corporate models.
-      `,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.FastApi,
-      SkillDatabaseKeys.ModelContextProtocol,
-      SkillDatabaseKeys.ArtificialIntelligence,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
     archived: true,
   },
 
