@@ -116,6 +116,7 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
+      ProjectDatabaseKeys.CommerzbankTrumpNotification,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
