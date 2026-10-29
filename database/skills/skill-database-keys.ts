@@ -147,7 +147,7 @@ enum SkillDatabaseKeys {
   Rest = "rest-api",
   Apollo = "apollo",
   GraphQl = "graphql-api",
-  TRcp = "trcp",
+  TRpc = "trcp",
   SocketIo = "socket-io",
   Pusher = "pusher",
 

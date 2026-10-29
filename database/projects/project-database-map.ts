@@ -553,7 +553,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.VercelAiSdk,
       SkillDatabaseKeys.Polar,
       SkillDatabaseKeys.Inngest,
-      SkillDatabaseKeys.TRcp,
+      SkillDatabaseKeys.TRpc,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Vitest,
