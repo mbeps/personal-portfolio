@@ -1,4 +1,6 @@
-import { AiFillLinkedin, AiOutlineGithub, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
+import LinkedInIcon from "@/components/icons/linkedin-icon";
+import MailIcon from "@/components/icons/mail-icon";
 import type SocialLinkInterface from "@/types/socials/social-link";
 
 /**
@@ -13,12 +15,12 @@ const socialLinks: SocialLinkInterface[] = [
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/maruf-bepary",
-    IconComponent: AiFillLinkedin,
+    IconComponent: LinkedInIcon,
   },
   {
     name: "Email",
     link: "mailto:maruf.h.bepary@gmail.com",
-    IconComponent: AiOutlineMail,
+    IconComponent: MailIcon,
   },
 ];
 
