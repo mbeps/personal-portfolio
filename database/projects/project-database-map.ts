@@ -57,7 +57,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Forum Discussions",
     description: `
       A community platform where users create dedicated groups, publish posts, and participate in threaded discussions.
-      Features include voting, media sharing, bookmarking, and personalized content feeds.
+      Features include voting, media sharing, bookmarking, and personalised content feeds.
       `,
     repositoryURL: "https://github.com/mbeps/next_discussion_platform",
     deploymentURL: "https://forum-discussions.maruf-bepary.com/",
@@ -84,7 +84,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankAppStatus]: {
     name: "Commerzbank App Status",
     description: `
-      Monitors the operational health and uptime of enterprise services across the organization.
+      Monitors the operational health and uptime of enterprise services across the organisation.
       Users track critical systems through personal subscriptions and team groups, with direct incident reporting and status announcements.
     `,
     skills: [
@@ -121,7 +121,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Commerzbank Rates",
     description: `
       Delivers daily risk-free and forward-looking interest rates sourced from financial market data providers.
-      Business users can analyze historical trends, export spreadsheet reports, and configure automated threshold alerts.
+      Business users can analyse historical trends, export spreadsheet reports, and configure automated threshold alerts.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -238,7 +238,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Music Streaming",
     description: `
       An audio streaming platform for discovering artists, exploring albums, and playing tracks.
-      Listeners can build custom playlists with drag-and-drop reordering and curate their favorite songs.
+      Listeners can build custom playlists with drag-and-drop reordering and curate their favourite songs.
       `,
     archived: true,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
@@ -266,7 +266,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.RichTextNotes]: {
     name: "Rich-Text Notes",
     description: `
-      A workspace for creating formatted documents with embedded media and organizing them into hierarchical notebooks.
+      A workspace for creating formatted documents with embedded media and organising them into hierarchical notebooks.
       Notes can be published to the web or managed through AI assistants via MCP.
     `,
     archived: true,
@@ -299,7 +299,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Real-Time Messaging",
     description: `
       Enables instant communication through private one-on-one chats and collaborative group conversations.
-      Users can share images inline, monitor online presence, and customize their profiles.
+      Users can share images inline, monitor online presence, and customise their profiles.
       `,
     repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
     deploymentURL: "https://messaging.maruf-bepary.com/",
@@ -332,8 +332,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.Noodle]: {
     name: "Noodle",
     description: `
-      An open-source study platform designed to streamline academic organization for students.
-      Centralizes course materials, tracks assignments and exam schedules, and organizes study notes.
+      An open-source study platform designed to streamline academic organisation for students.
+      Centralises course materials, tracks assignments and exam schedules, and organises study notes.
       `,
     repositoryURL: "https://github.com/ixahmedxi/noodle",
     deploymentURL: "https://noodle.run/",
@@ -362,7 +362,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
     description: `
-      Investigates and prevents the loss of reasoning capabilities in language models during specialized fine-tuning.
+      Investigates and prevents the loss of reasoning capabilities in language models during specialised fine-tuning.
       Introduces a hybrid training approach that preserves structured reasoning while adapting to domain-specific tasks.
     `,
     repositoryURL:
@@ -393,7 +393,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.ExcelSpreadsheetMCP]: {
     name: "Excel Spreadsheet MCP Server",
     description: `
-      Connects AI assistants directly to spreadsheets for automated data manipulation, styling, and financial modeling.
+      Connects AI assistants directly to spreadsheets for automated data manipulation, styling, and financial modelling.
       Enables autonomous agents to execute complex formulas, generate multi-series charts, and run statistical analysis.
       `,
     repositoryURL: "https://github.com/mbeps/excel-mcp",
@@ -452,7 +452,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
     name: "Commerzbank AI Proxy",
     description: `
-      Translates proprietary internal generative AI endpoints into standardized streaming and tool-calling interfaces.
+      Translates proprietary internal generative AI endpoints into standardised streaming and tool-calling interfaces.
       Enables enterprise development teams to connect standard developer tooling and assistants to private corporate models.
       `,
     skills: [
@@ -497,7 +497,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AiChatClient]: {
     name: "AI Chat Client",
     description: `
-      A conversational workspace featuring branching message trees, sidecar visual artifacts, and multi-model support.
+      A conversational workspace featuring branching message trees, sidecar visual artefacts, and multi-model support.
       Integrates document retrieval for contextual search, slash-command prompt shortcuts, and extensible external tools.
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
@@ -566,7 +566,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     description: `
       A multi-modal content creation platform providing conversation, code synthesis, and image generation.
-      Users can customize prompt parameters and manage their usage through tier-based subscriptions.
+      Users can customise prompt parameters and manage their usage through tier-based subscriptions.
     `,
     repositoryURL: "https://github.com/mbeps/magician-ai",
     skills: [
@@ -598,7 +598,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "AI Quizzes",
     archived: true,
     description: `
-      Generates customized quizzes across diverse topics in multiple-choice and fill-in-the-blank formats.
+      Generates customised quizzes across diverse topics in multiple-choice and fill-in-the-blank formats.
       Delivers immediate answer feedback, scoring metrics, and historical performance tracking.
     `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
@@ -629,7 +629,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AuthenticationMicroService]: {
     name: "Authentication Microservice",
     description: `
-      Centralizes identity verification and role-based access control across internal enterprise applications.
+      Centralises identity verification and role-based access control across internal enterprise applications.
       Manages token lifecycles, session validation, and user profile permissions to reduce authentication redundancy.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
@@ -663,7 +663,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     description: `
       Simulates enterprise identity provider authentication flows for local testing and development environments.
-      Allows developers to configure synthetic user accounts with custom roles and permissions to test authorization scenarios offline.
+      Allows developers to configure synthetic user accounts with custom roles and permissions to test authorisation scenarios offline.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
@@ -687,7 +687,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Email Microservice",
     archived: true,
     description: `
-      A centralized service for dispatching transactional emails and system notifications across enterprise applications.
+      A centralised service for dispatching transactional emails and system notifications across enterprise applications.
       Consolidates templating, delivery tracking, and connection pooling into a shared messaging utility.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
@@ -708,7 +708,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.LdapPermissionsMicroService]: {
     name: "LDAP Permissions Microservice",
     description: `
-      Resolves and caches user permissions and organizational directory roles for downstream internal services.
+      Resolves and caches user permissions and organisational directory roles for downstream internal services.
       Streamlines access evaluation across applications by providing a unified permission querying endpoint.
       `,
     archived: true,
@@ -802,7 +802,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
     name: "LDAP Role-Based Access Control Library",
     description: `
-      Provides declarative authorization utilities for enforcing user permissions derived from corporate directory groups.
+      Provides declarative authorisation utilities for enforcing user permissions derived from corporate directory groups.
       Eliminates repetitive security boilerplate by intercepting requests and validating user privileges against defined access policies.
       `,
     skills: [
@@ -852,7 +852,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
     name: "Quick Settings Tweak Extension",
     description: `
-      Allows users to customize and reorder system menu toggles in their desktop environment.
+      Allows users to customise and reorder system menu toggles in their desktop environment.
       Provides granular control over menu visibility, button placement, and notification tray layouts.
       `,
     repositoryURL: "https://github.com/qwreey/quick-settings-tweaks",
