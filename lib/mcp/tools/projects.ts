@@ -25,6 +25,7 @@ export function registerProjectsTools(server: McpServer): void {
     "list_projects",
     {
       title: "List Projects",
+      annotations: { readOnlyHint: true },
       description:
         "List and filter portfolio projects by category, project type, skill, archived status, or search query.",
       inputSchema: z.object({
@@ -127,6 +128,7 @@ export function registerProjectsTools(server: McpServer): void {
     "get_project",
     {
       title: "Get Project Details",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve detailed metadata for a specific project by its key, optionally including markdown features and blog writeup.",
       inputSchema: z.object({

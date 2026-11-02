@@ -33,6 +33,7 @@ export function registerSkillsTools(server: McpServer): void {
     "list_skills",
     {
       title: "List Skills",
+      annotations: { readOnlyHint: true },
       description:
         "List and filter technical skills by category, skill type, whether it is a primary skill, or search query.",
       inputSchema: z.object({
@@ -97,6 +98,7 @@ export function registerSkillsTools(server: McpServer): void {
     "get_skill",
     {
       title: "Get Skill Details",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve metadata for a skill along with all related materials (projects, work roles, courses, modules, certificates, blogs).",
       inputSchema: z.object({

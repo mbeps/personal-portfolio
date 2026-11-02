@@ -23,6 +23,7 @@ export function registerBlogsTools(server: McpServer): void {
     "list_blogs",
     {
       title: "List Blog Articles",
+      annotations: { readOnlyHint: true },
       description:
         "List and filter technical blog articles by category, skill, archived status, or search query.",
       inputSchema: z.object({
@@ -111,6 +112,7 @@ export function registerBlogsTools(server: McpServer): void {
     "get_blog",
     {
       title: "Get Blog Post",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve metadata and full markdown article content for a specific blog post.",
       inputSchema: z.object({

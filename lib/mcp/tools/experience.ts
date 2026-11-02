@@ -28,6 +28,7 @@ export function registerExperienceTools(server: McpServer): void {
     "list_experience",
     {
       title: "List Work & Volunteer Experience",
+      annotations: { readOnlyHint: true },
       description:
         "List and filter work experience, internships, and volunteering roles.",
       inputSchema: z.object({
@@ -128,6 +129,7 @@ export function registerExperienceTools(server: McpServer): void {
     "get_experience_role",
     {
       title: "Get Experience Role Details",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve comprehensive information for a role, including company details and full responsibilities markdown.",
       inputSchema: z.object({

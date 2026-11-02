@@ -24,6 +24,7 @@ export function registerAboutTool(server: McpServer): void {
     "get_about",
     {
       title: "Get About Information",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve developer profile, background summary, years of experience, contact/socials, and bio.",
       inputSchema: z.object({
