@@ -20,6 +20,7 @@ export function registerEducationTools(server: McpServer): void {
     "list_education",
     {
       title: "List Educational Qualifications",
+      annotations: { readOnlyHint: true },
       description:
         "List degrees and academic qualifications (institutions, grades, years, and skills).",
       inputSchema: z.object({}),
@@ -50,6 +51,7 @@ export function registerEducationTools(server: McpServer): void {
     "get_course",
     {
       title: "Get Course Details",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve details for a specific degree course along with all associated modules.",
       inputSchema: z.object({
@@ -92,6 +94,7 @@ export function registerEducationTools(server: McpServer): void {
   server.registerTool(
     "list_modules",
     {
+      annotations: { readOnlyHint: true },
       title: "List University Modules",
       description:
         "List and filter university modules studied, grades achieved, year group, and skills developed.",

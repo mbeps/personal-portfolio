@@ -31,6 +31,7 @@ export function registerCvTool(server: McpServer): void {
     "get_cv",
     {
       title: "Get Full CV",
+      annotations: { readOnlyHint: true },
       description:
         "Retrieve structured CV snapshot covering bio summary, grouped skills, work experience, education, volunteering, and key projects.",
       inputSchema: z.object({

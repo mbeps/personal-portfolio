@@ -25,6 +25,7 @@ export function registerCertificatesTools(server: McpServer): void {
     "list_certificates",
     {
       title: "List Certificates & Licenses",
+      annotations: { readOnlyHint: true },
       description:
         "List and filter certifications and online courses by issuer, category, skill, archived status, or search query.",
       inputSchema: z.object({
@@ -120,6 +121,7 @@ export function registerCertificatesTools(server: McpServer): void {
     "get_certificate",
     {
       title: "Get Certificate Details",
+      annotations: { readOnlyHint: true },
       description: "Retrieve details for a specific certificate by key.",
       inputSchema: z.object({
         certificateKey: z

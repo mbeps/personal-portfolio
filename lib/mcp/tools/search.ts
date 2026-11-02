@@ -45,6 +45,7 @@ export function registerSearchTool(server: McpServer): void {
     "search_portfolio",
     {
       title: "Universal Portfolio Search",
+      annotations: { readOnlyHint: true },
       description:
         "Fuzzy search across all portfolio items (projects, experience roles, courses, certificates, and blogs).",
       inputSchema: z.object({
