@@ -85,7 +85,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Commerzbank App Status",
     description: `
       Monitors the operational health and uptime of enterprise services across the organisation.
-      Users track critical systems through personal subscriptions and team groups, with direct incident reporting and status announcements.
+      Users and AI agents (via MCP) can track critical systems through personal subscriptions and team groups, with direct incident reporting and status announcements.
     `,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -105,6 +105,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
       SkillDatabaseKeys.Grafana,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
