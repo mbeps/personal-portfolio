@@ -10,8 +10,8 @@
 - Users are able to view the status of apps in their personal subscriptions
 - Users are able to view the status of group apps
 - Users are able to open more information about apps and view details such as open tickets, entry in Architecture App, etc.
- - Users are able to open more information about apps and view details such as open tickets, an entry in the Architecture App, etc.
- - Users can view an overview of the apps (for example: how many are healthy, in a warning state, or critical)
+- Users are able to open more information about apps and view details such as open tickets, an entry in the Architecture App, etc.
+- Users can view an overview of the apps (for example: how many are healthy, in a warning state, or critical)
 
 ## Personal Subscriptions
 - Users are able to subscribe and unsubscribe from monitoring apps for their personal list
@@ -27,7 +27,9 @@
 
 ## Incidents
 - Users can view issues directly from the app including impact, importance, ticket numbers, etc
+- Users can view a list of incidents along with their impact and urgency scores
 - Users can raise incidents directly from the app for the associated application being monitored
+- Users can raise incidents directly to ServiceNow
 
 ## Admin Controls
 ### App Management
@@ -48,11 +50,37 @@
 - Admins can set banners of various severity that will be displayed on all main pages
 - Admins can set dialogs of various severity that will pop up when visiting the site
 - Admins can set toast messages of various severity that will be displayed on all main pages
- - Admins can set whether these are dismissible and whether to show them only once
+- Admins can set whether these are dismissible and whether to show them only once
 - Admins can modify the messages
 - Admins can enable or disable the messages
 - Admins can remove the messages
 
 ### Others
- - Admins can edit the contact details shown on the About page
- - Admins can view versions of system components such as the app, Node and React
+- Admins can edit the contact details shown on the About page
+- Admins can view versions of system components such as the app, Node and React
+
+## AI / MCP
+AI agents can perform the following user actions via Model Context Protocol (MCP):
+
+### Viewing App Status
+- Agents are able to view default app statuses
+- Agents are able to view the status of apps in a user's personal subscriptions
+- Agents are able to view the status of group apps
+- Agents are able to retrieve detailed information about apps, such as open tickets and entries in the Architecture App
+- Agents can view an overview of the apps (for example: how many are healthy, in a warning state, or critical)
+
+### Personal Subscriptions
+- Agents are able to subscribe and unsubscribe a user from monitoring apps for their personal list
+- Agents are able to view a list of apps that a user has subscribed to
+
+### Groups
+- Agents are able to view a list of groups that a user is a member of
+- Agents are able to create and delete groups on behalf of creators/admins
+- Agents are able to add/remove members to/from groups where the user is a creator/admin
+- Agents are able to promote group members to admins or remove admin privileges
+- Agents are able to subscribe and unsubscribe groups from monitoring apps
+- Agents are able to view the list of applications a group is subscribed to
+
+### Incidents
+- Agents can view a list of incidents along with their impact and urgency scores
+- Agents can raise incidents directly to ServiceNow on behalf of a user
