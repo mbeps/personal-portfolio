@@ -503,7 +503,7 @@ const projectMap: Database<ProjectInterface> = {
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/ai-client",
-    // deploymentURL: "https://ai-chat-client.maruf-bepary.com",
+    deploymentURL: "https://ai-chat-client.maruf-bepary.com",
     type: ProjectTypeEnum.Personal,
     skills: [
       SkillDatabaseKeys.TypeScript,
